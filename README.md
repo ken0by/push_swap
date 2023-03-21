@@ -3,7 +3,7 @@
   <img src="https://github.com/mcombeau/mcombeau/blob/main/42_badges/push_swapm.png" alt="push_swap 42 project badge"/>
   </p>
  <p align="center">
-	/* https://badge42.vercel.app/ */
+	<!-- https://badge42.vercel.app/ -->
   </p>
 
 <p align="center">
