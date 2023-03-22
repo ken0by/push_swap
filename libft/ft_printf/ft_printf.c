@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 19:18:03 by rofuente          #+#    #+#             */
-/*   Updated: 2023/03/06 16:56:51 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/03/22 18:31:11 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	ft_printf(char const *str, ...)
 	{
 		if (str[i] == '%')
 		{
-			if (ft_strlen(str) > i + 1)
+			if ((int)ft_strlen(str) > i + 1)
 				j += ft_type(args, str[i + 1]);
 			i++;
 		}

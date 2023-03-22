@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:14:41 by rofuente          #+#    #+#             */
-/*   Updated: 2023/02/28 19:53:41 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/03/22 17:23:43 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <unistd.h>
+# include "../libft.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
@@ -32,7 +33,7 @@ char	*get_next_line(int fd);
 
 /* ---------- UTILS ---------- */
 char	*get_next_line(int fd);
-char	*ft_strjoin(char *s1, char *s2);
+//char	*ft_strjoin(char *s1, char *s2);
 char	*ft_newline(char *s, char **line);
 char	*ft_copy(char *s, char *aux);
 char	*ft_free(char *s, char *b);

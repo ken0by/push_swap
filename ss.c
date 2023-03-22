@@ -1,44 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ss.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/28 17:18:08 by rodro             #+#    #+#             */
-/*   Updated: 2023/03/22 17:21:42 by rofuente         ###   ########.fr       */
+/*   Created: 2023/03/22 17:14:01 by rofuente          #+#    #+#             */
+/*   Updated: 2023/03/22 19:26:44 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "push_swap.h"
 
-/* int	ft_strlen(const char *str)
+void	sa(char **a, int n)
 {
-	int	i;
+	char	*aux;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-} */
-
-int	ft_putchr(const char c)
-{
-	write(1, &c, 1);
-	return (1);
+	//aux = '\0';
+	aux = a[n + 1];
+	a[n + 1] = a[n];
+	a[n] = aux;
+	printf("sa\n");
+	//return (a);
 }
 
-int	ft_putstr(const char *str)
-{
-	int	i;
+void	sb()
+{}
 
-	i = 0;
-	if (!str)
-		return (write(1, "(null)", 6));
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-	}
-	return (i);
-}
+void	ss()
+{}

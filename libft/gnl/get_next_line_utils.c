@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 14:16:58 by rofuente          #+#    #+#             */
-/*   Updated: 2023/02/16 17:59:38 by rodro            ###   ########.fr       */
+/*   Updated: 2023/03/22 17:23:14 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	check_newline(char *s, int y)
 	return (0);
 }
 
-char	*ft_strjoin(char *s, char *b)
+/* char	*ft_strjoin(char *s, char *b)
 {
 	char	*r;
 	int		x;
@@ -73,7 +73,7 @@ char	*ft_strjoin(char *s, char *b)
 	r[x] = '\0';
 	ft_free(s, b);
 	return (r);
-}
+} */
 
 char	*ft_newline(char *s, char **line)
 {
