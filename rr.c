@@ -6,8 +6,26 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 18:42:20 by rofuente          #+#    #+#             */
-/*   Updated: 2023/03/22 18:42:30 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:21:54 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ra(char *a)
+{
+	int		i;
+	int		j;
+	char	*s;
+
+	i = 1;
+	j = 0;
+	s = NULL;
+	while (a[i])
+	{
+		s[j] = a[i];
+		j++;
+		i++;
+	}
+	s[j] = a[0];
+}

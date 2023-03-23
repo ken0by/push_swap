@@ -37,11 +37,8 @@ static int	len(char **a)
 	return (k);
 }
 
-static void	if_neg(char *a, int n, char *s)
+static void	if_neg(char *a, int n, char *s, int i)
 {
-	int	i;
-
-	i = 0;
 	while (a[n])
 	{
 		if (a[n] == '-')
@@ -62,7 +59,8 @@ char	**fill_s(char **a)
 	char	**s;
 
 	s = NULL;
-	*s = malloc(sizeof(char *) * len(a));
+	k = len (a);
+	s = malloc(sizeof(char *) * (len(a)));
 	if (!s)
 		return (NULL);
 	j = 1;
@@ -73,13 +71,16 @@ char	**fill_s(char **a)
 		while (a[j][i])
 		{
 			if (a[j][i] >= '0' && a[j][i] <= '9')
-				s[k++] = &a[j][i];
+			{
+				s[1][k] = a[j][i];
+				k++;
+			}
 			if (a[j][i] == '-')
-				if_neg(a[j], i, s[k]);
+				if_neg(a[j], i, s[1], k);
 			i++;
 		}
 		j++;
 	}
-	s[k] = NULL;
+	s[1][k] = '\0';
 	return (s);
 }

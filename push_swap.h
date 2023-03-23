@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 13:55:35 by rofuente          #+#    #+#             */
-/*   Updated: 2023/03/22 19:27:09 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:22:57 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # include "libft/gnl/get_next_line.h"
 
 void	sa(char **a, int n);
+void	sb(char **a, char **b);
+void	ss(char **a, char **b, int n);
 char	**fill_s(char **a);
+//int		len(char **a);
 
 #endif

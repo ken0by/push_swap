@@ -6,47 +6,48 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 16:56:16 by rofuente          #+#    #+#             */
-/*   Updated: 2023/03/22 19:25:28 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:42:30 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	ord(int n, char **s)
+static void	ord(int n, char **a, char **b)
 {
-	int	j;
+	int		j;
 
 	j = 0;
-	while (s[j] && j < n)
+	while (a[j] && j < n)
 	{
-		if ((s[j] > s[j + 1]) && n > 1 && s[j + 1] != '\0')
-			sa(s, j);
-		if (s[j - 1] > s[j])
-			j = 0;
+
+		if ((a[j] > a[j + 1]) && n > 1 && a[j + 1] != '\0')
+			sa(a, j);
+		if (a[j] > a[j + 2] && a[j + 1] > a[j + 2] && n > 1 && a[j + 1] != '\0')
+			sb(a, b);
+		if ((a[j] > a[j + 1]) && a[j] > a[j + 2] && a[j + 1] > a[j + 2] && n > 1 && a[j + 1] != '\0')
+			ss(a, b, n);
 		else
 			j++;
 	}
-	return (0);
 }
 
-static int	comp(int ac, char **s)
+static int	comp(char **s, int ac)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	j = ac - 1;
-	while (j > 0)
+	while (j < 0)
 	{
 		i = 0;
 		while (s[j][i])
 		{
-			if ((s[j][i] >= '0' && s[j][i] <= '9') || s[j][i] == ' ' || s[j][i] == '-' || s[j][i] == '+')
-				i++;
-			else
+			if (s[j][i] < '0' || s[j][i] > '9' || s[j][i] != ' ' || s[j][i] != '-' || s[j][i] != '+')
 			{
 				printf("Error\n");
 				return (0);
 			}
+			i++;
 		}
 		j--;
 	}
@@ -55,12 +56,23 @@ static int	comp(int ac, char **s)
 
 int main(int ac, char **av)
 {
-	char	**s;
+	char	**a;
+	char	**b;
 
-	if (comp(ac, av) == 0)
+	/* if (ac < 2)
+	{
+		printf("Error\n");
 		return (0);
-	s = fill_s(av);
-	if (ord(ac, s) == 1)
+	} */
+	printf("1\n");
+	if (comp(av, ac) == 0)
 		return (0);
+	a = NULL;
+	a = fill_s(av);
+	b = NULL;
+	ord(ac, a, b);
 	return (0);
 }
+
+/* HAY QUE CAMBIAR TODOS LOS PRINTF DEL PROYECTO POR MI FT_PRINTF */
+/* DA EL SEGMENTATION FAULT EN FILL EN TEORIA */
