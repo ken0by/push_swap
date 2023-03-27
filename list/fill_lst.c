@@ -6,11 +6,26 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:16:36 by rofuente          #+#    #+#             */
-/*   Updated: 2023/03/24 17:47:07 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/03/27 17:16:26 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "include/push_swap.h"
+
+int	ft_count(lst *a)
+{
+	lst	*aux;
+	int	i;
+
+	i = 0;
+	aux = a;
+	while (aux)
+	{
+		i++;
+		aux = aux->next;
+	}
+	return (i);
+}
 
 static lst	*lstlast(lst *a)
 {
@@ -26,7 +41,7 @@ static lst	*lstlast(lst *a)
 	return (aux);
 }
 
-static void	lstadd_back(lst **a, lst *new)
+void	lstadd_back(lst **a, lst *new)
 {
 	lst	*aux;
 
@@ -56,15 +71,14 @@ lst	*lstnew(int	content)
 lst	*fill_lst(lst *a, char **b, int	x)
 {
 	int	i;
-	int	j;
 	lst	*new;
 
-	j = 1;
-	while (j <= x)
+	i = 1;
+	while (i < x)
 	{
-		new = lstnew(ft_atoi(b[j]));
+		new = lstnew(ft_atoi(b[i]));
 		lstadd_back(&a, new);
-		j++;
+		i++;
 	}
 	return (a);
 }

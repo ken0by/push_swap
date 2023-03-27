@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 12:08:07 by rofuente          #+#    #+#             */
-/*   Updated: 2023/03/22 17:20:43 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/03/27 17:02:02 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
+
 
 int				ft_isalnum(int i);
 int				ft_isalpha(int i);

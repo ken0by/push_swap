@@ -6,13 +6,38 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:39:00 by rofuente          #+#    #+#             */
-/*   Updated: 2023/03/24 17:47:37 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/03/27 17:19:32 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "include/push_swap.h"
 
-static int	comp(char **s, int ac)
+static void ft_ord(lst *a, lst *b)
+{
+	lst	*aux;
+	lst	*aux1;
+	lst	*aux2;
+	lst	*aux3;
+
+	aux = a;
+	aux1 = b;
+	while (aux)
+	{
+		ft_printf("1\n");
+		aux2 = aux->next;
+		aux3 = aux2->next;
+		if (aux->n > aux2->n && aux->n > aux3->n && ft_count(a) > 1)
+			ft_swap_s(a, b);
+		else if (aux->n > aux2->n && ft_count(a) > 1)
+			ft_swap_a(aux, aux2);
+		else if (aux->n > aux3->n && aux2->n > aux3->n && ft_count(a) > 1)
+			ft_swap_b(aux, aux1);
+
+		aux = aux->next;
+	}
+}
+
+static int	ft_comp(char **s, int ac)
 {
 	int	i;
 	int	j;
@@ -25,7 +50,7 @@ static int	comp(char **s, int ac)
 		{
 			if (s[j][i] < '0' || s[j][i] > '9' || s[j][i] != ' ' || s[j][i] != '-' || s[j][i] != '+')
 			{
-				printf("Error\n");
+				ft_printf("Error\n");
 				return (0);
 			}
 			i++;
@@ -38,22 +63,25 @@ static int	comp(char **s, int ac)
 int	main(int ac, char **av)
 {
 	lst	*a;
+	lst	*b;
 	lst *aux;
+
 	if (ac < 2)
 	{
-		printf("Error\n");
+		ft_printf("Error\n");
 		return (0);
 	}
-	if (comp(av, ac) == 0)
+	a = NULL;
+	b = NULL;
+	if (ft_comp(av, ac) == 0)
 		return(0);
-	a = lstnew(0);
 	a = fill_lst(a, av, ac);
+	ft_ord(a, b);
 	aux = a;
 	while (aux)
 	{
-		printf("%d\n", aux->n);
+		ft_printf("%d\n", aux->n);
 		aux = aux->next;
 	}
-
 	return (0);
 }
