@@ -3,11 +3,14 @@ LIB	=	ar rcs
 RM	=	rm -f
 
 CC	=	gcc
-CFLAGS	=	-Wall -Wextra -Werror -I ./include -I ./libft/include/libft.h
+CFLAGS	=	-Wall -Wextra -Werror -g -I ./include -I ./libft/include/libft.h
 
 NAME	=	push_swap
 
-SRC	=	./src/push_swap.c ./src/fill_lst.c ./src/ss.c
+RR	=	./rules/ss.c ./rules/pp.c
+SS	=	./src/push_swap.c ./src/fill_lst.c
+
+SRC	=	$(SS) $(RR)
 OBJ	=	$(SRC:.c=.o)
 LIBFT_PATH = libft/
 LIBFT = $(LIBFT_PATH)libft.a

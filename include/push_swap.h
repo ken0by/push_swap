@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:59:06 by rofuente          #+#    #+#             */
-/*   Updated: 2023/03/28 16:52:49 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/03/28 19:04:00 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,9 @@ void	lstdelone(t_lst *lst);
 void	ft_swap_a(t_lst *a, t_lst *aux);
 void	ft_swap_b(t_lst *a, t_lst *b);
 void	ft_swap_s(t_lst *a, t_lst *b);
+
+/* PP.C */
+void	ft_push_a(t_lst *a, t_lst *b);
+void	ft_push_b(t_lst *a, t_lst *b);
 
 #endif
