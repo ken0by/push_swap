@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:39:00 by rofuente          #+#    #+#             */
-/*   Updated: 2023/03/28 19:09:41 by rodro            ###   ########.fr       */
+/*   Updated: 2023/03/29 18:17:21 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
+/*
 static void ft_ord(t_lst *a, t_lst *b);
 
 static void ft_ord1(t_lst *a, t_lst *b)
@@ -25,19 +25,9 @@ static void ft_ord1(t_lst *a, t_lst *b)
 	flag = 0;
 	while (aux)
 	{
-		if (aux->n > aux1->n && ft_count(a) > 0)
+		if (aux->n > aux1->n && ft_count(aux) > 0)
 		{
-			aux1 = a;
-			while (aux1)
-			{
-				if (aux1->n == aux->n)
-				{
-					ft_printf("OK\n");
-					break ;
-				}
-				ft_push_b(a, b);
-				aux1 = a;
-			}
+			ft_push_b(a, b, aux);
 			flag = 1;
 		}
 		if (flag == 1)
@@ -90,17 +80,21 @@ static void ft_ord(t_lst *a, t_lst *b)
 		ft_printf("sb\n");
 	}
 	else
-		ft_ord1(aux, aux1);
-}
+		ft_ord1(a, b);
+} */
 
 static int ft_comp(char **s, int ac)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
+	int	neg;
+	int	p;
 
 	j = ac - 1;
 	while (j < 0)
 	{
+		neg = 0;
+		p = 0;
 		i = 0;
 		while (s[j][i])
 		{
@@ -109,7 +103,16 @@ static int ft_comp(char **s, int ac)
 				ft_printf("Error\n");
 				return (0);
 			}
+			if (s[j][i] == '-')
+				neg++;
+			if (s[j][i] == '+')
+				p++;
 			i++;
+		}
+		if (neg > 1 || p > 1)
+		{
+			ft_printf("Error\n");
+			return (0);
 		}
 		j--;
 	}
@@ -132,7 +135,7 @@ int main(int ac, char **av)
 	if (ft_comp(av, ac) == 0)
 		return (0);
 	a = fill_lst(a, av, ac);
-	ft_ord(a, b);
+	ft_swap(a, b);
 	aux = a;
 	while (aux)
 	{

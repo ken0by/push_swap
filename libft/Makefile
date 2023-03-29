@@ -6,28 +6,68 @@ CFLAGS = -Wall -Wextra -Werror -I ./include -I ./ft_printf/include -I ./gnl/incl
 
 NAME = libft.a
 
-FT	=	./ft/ft_atoi.c ./ft/ft_bzero.c ./ft/ft_calloc.c ./ft/ft_isalnum.c ./ft/ft_isalpha.c ./ft/ft_isascii.c ./ft/ft_isdigit.c ./ft/ft_isprint.c ./ft/ft_itoa.c ./ft/ft_split.c ./ft/ft_tolower.c ./ft/ft_toupper.c
-LST	=	./lst/ft_lstadd_back.c ./lst/ft_lstadd_front.c ./lst/ft_lstclear.c ./lst/ft_lstdelone.c ./lst/ft_lstiter.c ./lst/ft_lstlast.c ./lst/ft_lstmap.c ./lst/ft_lstnew.c ./lst/ft_lstsize.c
-MEM	=	./mem/ft_memchr.c ./mem/ft_memcmp.c ./mem/ft_memcpy.c ./mem/ft_memmove.c ./mem/ft_memset.c
-PUT	=	./put/ft_putchar_fd.c ./put/ft_putendl_fd.c ./put/ft_putnbr_fd.c ./put/ft_putstr_fd.c
-STR	=	./str/ft_strchr.c ./str/ft_strdup.c ./str/ft_striteri.c ./str/ft_strjoin.c ./str/ft_strlcat.c ./str/ft_strlcpy.c ./str/ft_strlen.c ./str/ft_strmapi.c ./str/ft_strncmp.c ./str/ft_strnstr.c ./str/ft_strrchr.c ./str/ft_strtrim.c ./str/ft_substr.c
-FT_PRINTF	=	./ft_printf/src/ft_printf.c ./ft_printf/src/ft_print_char.c ./ft_printf/src/ft_print_nbr.c
-GNL	=	./gnl/src/get_next_line.c ./gnl/src/get_next_line_bonus.c ./gnl/src/get_next_line_utils.c ./gnl/src/get_next_line_utils_bonus.c
+FT	=	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c ft_split.c ft_tolower.c ft_toupper.c
+LST	=	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c
+MEM	=	ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c
+PUT	=	ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c
+STR	=	ft_strchr.c ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c
+FT_PRINTF	=	ft_printf.c ft_print_char.c ft_print_nbr.c
+GNL	=	get_next_line.c get_next_line_bonus.c get_next_line_utils.c get_next_line_utils_bonus.c
 
-SRC	=	$(FT) $(LST) $(MEM) $(PUT) $(STR) $(FT_PRINTF) $(GNL)
-OBJ = $(SRC:.c=.o)
-INCLUDE = libft.h ./ft_printf/ft_printf.h ./gnl/get_next_line.h ./gnl/get_next_line_bonus.h
 
-all: $(NAME)
+SRC1_DIR	=	./ft/
+SRC2_DIR	=	./lst/
+SRC3_DIR	=	./mem/
+SRC4_DIR	=	./put/
+SRC5_DIR	=	./str/
+SRC6_DIR	=	./ft_printf/src/
+SRC7_DIR	=	./gnl/src/
+SRC1	=	$(addprefix $(SRC1_DIR), $(FT))
+SRC2	=	$(addprefix $(SRC2_DIR), $(LST))
+SRC3	=	$(addprefix $(SRC3_DIR), $(MEM))
+SRC4	=	$(addprefix $(SRC4_DIR), $(PUT))
+SRC5	=	$(addprefix $(SRC5_DIR), $(STR))
+SRC6	=	$(addprefix $(SRC6_DIR), $(FT_PRINTF))
+SRC7	=	$(addprefix $(SRC7_DIR), $(GNL))
+
+OBJ_DIR	=	./obj/
+OBJ_FILES	=	$(FT:.c=.o) $(LST:.c=.o) $(MEM:.c=.o) $(PUT:.c=.o) $(STR:.c=.o) $(FT_PRINTF:.c=.o) $(GNL:.c=.o)
+OBJ	=	$(addprefix $(OBJ_DIR), $(OBJ_FILES))
+
+#INCLUDE = libft.h ./ft_printf/ft_printf.h ./gnl/get_next_line.h ./gnl/get_next_line_bonus.h
+
+all: $(OBJ_DIR) $(NAME)
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+$(OBJ_DIR)%.o:$(SRC1_DIR)%.c
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+$(OBJ_DIR)%.o:$(SRC2_DIR)%.c
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+$(OBJ_DIR)%.o:$(SRC3_DIR)%.c
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+$(OBJ_DIR)%.o:$(SRC4_DIR)%.c
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+$(OBJ_DIR)%.o:$(SRC5_DIR)%.c
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+$(OBJ_DIR)%.o:$(SRC6_DIR)%.c
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+$(OBJ_DIR)%.o:$(SRC7_DIR)%.c
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(NAME): $(OBJ)
 	$(LIB) $(NAME) $(OBJ)
+	@echo "\n$(G)Basic library compiled!$(DEF_COLOR)-> $@\n"
 
 clean:
 	$(RM) $(OBJ)
+	@rm -rf $(OBJ_DIR)
+	@echo "$(R)All .o files removed$(DEF_COLOR)\n"
 
 fclean: clean
 	$(RM) $(NAME)
+	@rm -rf $(OBJ_DIR)
+	@echo "$(R)Library .a file removed$(DEF_COLOR)\n"
 
 re: fclean all
 

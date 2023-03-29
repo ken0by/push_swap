@@ -3,18 +3,25 @@ LIB	=	ar rcs
 RM	=	rm -f
 
 CC	=	gcc
-CFLAGS	=	-Wall -Wextra -Werror -g -I ./include -I ./libft/include/libft.h
+CFLAGS	=	-Wall -Wextra -Werror -I ./include -I ./libft/include/libft.h
 
 NAME	=	push_swap
 
-RR	=	./rules/ss.c ./rules/pp.c
-SS	=	./src/push_swap.c ./src/fill_lst.c
+RR	=	ss.c pp.c ord.c
+SS	=	push_swap.c fill_lst.c
 
-SRC	=	$(SS) $(RR)
-OBJ	=	$(SRC:.c=.o)
+SRCS_DIR	=	./src/
+SRCR_DIR	=	./rules/
+SRCS	=	$(addprefix $(SRCS_DIR), $(SS))
+SRCR	=	$(addprefix $(SRCR_DIR), $(RR))
+
+OBJ_DIR	=	./obj/
+OBJ_FILES	=	$(SS:.c=.o) $(RR:.c=.o)
+OBJ	=	$(addprefix $(OBJ_DIR), $(OBJ_FILES))
+
 LIBFT_PATH = libft/
 LIBFT = $(LIBFT_PATH)libft.a
-INCLUDE	=	include/
+#INCLUDE	=	include/
 
 ##########COLORES##########
 DEF_COLOR = \033[0;39m
@@ -28,10 +35,17 @@ GR = \033[30;1m
 END = \033[0m
 
 ##########REGLAS##########
-all: $(NAME)
+all: $(OBJ_DIR) $(NAME)
 
 $(LIBFT) : $(LIBFT_PATH)
 	@make -C $(LIBFT_PATH)
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+$(OBJ_DIR)%.o:$(SRCS_DIR)%.c
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+$(OBJ_DIR)%.o:$(SRCR_DIR)%.c
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(NAME): $(OBJ) $(LIBFT)
 	@$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
@@ -40,11 +54,13 @@ $(NAME): $(OBJ) $(LIBFT)
 clean:
 	$(RM) $(OBJ)
 	@make clean -C libft
+	@rm -rf $(OBJ_DIR)
 	@echo "$(R)All .o files removed$(DEF_COLOR)\n"
 
 fclean: clean
 	$(RM) $(NAME)
 	@make fclean -C libft
+	@rm -f $(OBJ_DIR)
 	@echo "$(R)Library .a file removed$(DEF_COLOR)\n"
 
 re: fclean all

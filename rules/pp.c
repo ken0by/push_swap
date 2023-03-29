@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pp.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/28 17:52:51 by rodro             #+#    #+#             */
-/*   Updated: 2023/03/28 19:11:42 by rodro            ###   ########.fr       */
+/*   Created: 2023/03/29 17:57:23 by rofuente          #+#    #+#             */
+/*   Updated: 2023/03/29 18:13:20 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,7 @@ void	ft_push_a(t_lst *a, t_lst *b)
 
 void	ft_push_b(t_lst *a, t_lst *b)
 {
-	t_lst	*aux;
-
-	aux = a->next;
 	ft_lstfront(&b, a);
-	lstdelone(a);
-	a = aux;
+	a = a->next;
 	ft_printf("pb\n");
 }
