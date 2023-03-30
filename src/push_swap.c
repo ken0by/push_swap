@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:39:00 by rofuente          #+#    #+#             */
-/*   Updated: 2023/03/29 18:17:21 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/03/30 19:36:52 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,6 @@ int main(int ac, char **av)
 {
 	t_lst *a;
 	t_lst *b;
-	t_lst *aux;
 
 	if (ac < 2)
 	{
@@ -136,11 +135,5 @@ int main(int ac, char **av)
 		return (0);
 	a = fill_lst(a, av, ac);
 	ft_swap(a, b);
-	aux = a;
-	while (aux)
-	{
-		ft_printf("%d\n", aux->n);
-		aux = aux->next;
-	}
 	return (0);
 }

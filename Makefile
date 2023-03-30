@@ -8,7 +8,7 @@ CFLAGS	=	-Wall -Wextra -Werror -I ./include -I ./libft/include/libft.h
 NAME	=	push_swap
 
 RR	=	ss.c pp.c ord.c
-SS	=	push_swap.c fill_lst.c
+SS	=	push_swap.c fill_lst.c ft_check.c
 
 SRCS_DIR	=	./src/
 SRCR_DIR	=	./rules/

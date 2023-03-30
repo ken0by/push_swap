@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_lst.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:16:36 by rofuente          #+#    #+#             */
-/*   Updated: 2023/03/28 16:48:57 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/03/30 16:24:03 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,32 @@ t_lst	*lstnew(int content)
 t_lst	*fill_lst(t_lst *a, char **b, int x)
 {
 	int		i;
+	int		j;
+	char	**s;
 	t_lst	*new;
 
 	i = 1;
 	while (i < x)
 	{
-		new = lstnew(ft_atoi(b[i]));
-		lstadd_back(&a, new);
+		j = 0;
+		while (b[i][j])
+			j++;
+		if (j == 1)
+		{
+			new = lstnew(ft_atoi(b[i]));
+			lstadd_back(&a, new);
+		}
+		else
+		{
+			s = ft_split(b[i], ' ');
+			j = 0;
+			while (s[j])
+			{
+				new = lstnew(ft_atoi(s[j]));
+				lstadd_back(&a, new);
+				j++;
+			}
+		}
 		i++;
 	}
 	return (a);

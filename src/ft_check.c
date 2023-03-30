@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pp.c                                               :+:      :+:    :+:   */
+/*   ft_check.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/29 17:57:23 by rofuente          #+#    #+#             */
-/*   Updated: 2023/03/30 18:58:52 by rodro            ###   ########.fr       */
+/*   Created: 2023/03/30 16:30:40 by rodro             #+#    #+#             */
+/*   Updated: 2023/03/30 16:44:08 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	ft_lstfront(t_lst **lst, t_lst *new)
+int	ft_check(t_lst *a)
 {
-	t_lst	*s1;
+	t_lst	*aux;
+	t_lst	*aux1;
 
-	s1 = lst[0];
-	lst[0] = new;
-	lst[0]->next = s1;
-}
-
-void	ft_push_a(t_lst *a, t_lst *b)
-{
-	ft_lstfront(&a, b);
-	ft_printf("pa\n");
-}
-
-void	ft_push_b(t_lst *a, t_lst *b)
-{
-	ft_lstfront(&b, a);
-	a = a->next;
-	ft_printf("pb\n");
+	aux = a;
+	while (aux)
+	{
+		if (!aux->next)
+			break;
+		aux1 = aux->next;
+		if (aux->n != aux1->n)
+			return (0);
+		aux = aux->next;
+	}
+	return (1);
 }

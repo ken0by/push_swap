@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:59:06 by rofuente          #+#    #+#             */
-/*   Updated: 2023/03/29 18:16:10 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/03/30 19:36:59 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,12 @@ void	ft_swap_s(t_lst *a, t_lst *b);
 /* PP.C */
 void	ft_push_a(t_lst *a, t_lst *b);
 void	ft_push_b(t_lst *a, t_lst *b);
+void	ft_lstfront(t_lst **lst, t_lst *new);
 
+/* ORD.C */
 void	ft_swap(t_lst *a, t_lst *b);
+
+/* FT_CHECK.C */
+int		ft_check(t_lst *a);
 
 #endif
