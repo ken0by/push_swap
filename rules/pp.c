@@ -6,7 +6,7 @@
 /*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 17:57:23 by rofuente          #+#    #+#             */
-/*   Updated: 2023/03/30 18:58:52 by rodro            ###   ########.fr       */
+/*   Updated: 2023/04/01 20:55:43 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,15 @@ void	ft_lstfront(t_lst **lst, t_lst *new)
 void	ft_push_a(t_lst *a, t_lst *b)
 {
 	ft_lstfront(&a, b);
+	b = b->next;
 	ft_printf("pa\n");
 }
 
-void	ft_push_b(t_lst *a, t_lst *b)
+void	ft_push_b(t_lst *a, t_lst **b)
 {
-	ft_lstfront(&b, a);
+	if (b[0] == NULL)
+		b[0] = lstnew(0);
+	ft_lstfront(b, a);
 	a = a->next;
 	ft_printf("pb\n");
 }

@@ -6,7 +6,7 @@
 /*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:59:06 by rofuente          #+#    #+#             */
-/*   Updated: 2023/03/30 19:36:59 by rodro            ###   ########.fr       */
+/*   Updated: 2023/04/01 20:56:15 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_swap_s(t_lst *a, t_lst *b);
 
 /* PP.C */
 void	ft_push_a(t_lst *a, t_lst *b);
-void	ft_push_b(t_lst *a, t_lst *b);
+void	ft_push_b(t_lst *a, t_lst **b);
 void	ft_lstfront(t_lst **lst, t_lst *new);
 
 /* ORD.C */
