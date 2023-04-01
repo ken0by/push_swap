@@ -6,7 +6,7 @@
 /*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:39:00 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/01 20:31:25 by rodro            ###   ########.fr       */
+/*   Updated: 2023/04/01 21:32:11 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,23 +91,24 @@ static int ft_comp(char **s, int ac)
 	int	p;
 
 	j = ac - 1;
-	while (j < 0)
+	while (j > 0)
 	{
 		neg = 0;
 		p = 0;
 		i = 0;
 		while (s[j][i])
 		{
-			if (s[j][i] < '0' || s[j][i] > '9' || s[j][i] != ' ' || s[j][i] != '-' || s[j][i] != '+')
-			{
-				ft_printf("Error\n");
-				return (0);
-			}
 			if (s[j][i] == '-')
 				neg++;
 			if (s[j][i] == '+')
 				p++;
-			i++;
+			if ((s[j][i] >= '0' && s[j][i] <= '9') || s[j][i] == ' ' || s[j][i] == '-' || s[j][i] == '+')
+				i++;
+			else
+			{
+				ft_printf("Error\n");
+				return (0);
+			}
 		}
 		if (neg > 1 || p > 1)
 		{
@@ -137,3 +138,4 @@ int main(int ac, char **av)
 	ft_swap(a, b);
 	return (0);
 }
+/* DA SEGMENTATION FAULT CUANDO LOS AV SON 2 3 "1"/"-1" */
