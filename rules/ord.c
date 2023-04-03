@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ord.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 17:57:16 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/01 20:57:35 by rodro            ###   ########.fr       */
+/*   Updated: 2023/04/03 19:16:17 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int puta(t_lst *a, t_lst *b)
+int puta(t_lst *a, t_lst **b)
 {
 	t_lst *aux;
 
@@ -24,7 +24,7 @@ int puta(t_lst *a, t_lst *b)
 			return (0);
 		if (a->n > aux->n)
 			return (1);
-		ft_push_b(a, &b);
+		ft_push_b(a, b);
 		a = aux;
 		aux = aux->next;
 	}
@@ -64,14 +64,19 @@ void ft_swap(t_lst *a, t_lst *b)
 			}
 			else if (aux1->n > aux2->n && aux1->n > aux->n && ft_count(a) > 0)
 			{
-				flag = puta(a, b);
+				flag = puta(a, &b);
+				aux = b;
+				while (aux)
+				{
+					ft_printf("b -> %d\n", aux->n);
+					aux = aux->next;
+				}
 				break ;
 			}
 			else
 				flag = 0;
 			aux = aux->next;
 		}
-		ft_printf("flag -> %d\n", flag);
 		aux = b;
 		while (aux)
 		{
@@ -91,13 +96,18 @@ void ft_swap(t_lst *a, t_lst *b)
 			aux = a;
 		else
 		{
-			/* NO RELLENAS CORRECTAMENTE EL STACK B X ESO DA
-			SEGMENTATION FAULT AQUI */
-			ft_printf("%d\n", b->n);
+			/* NO RELLENAS CORRECTAMENTE EL STACK B Y POR ESO DA UN BUCLE INFINITO SI
+			QUITAS EL IF DE FLAG */
+			flag = 0;
 			while (b)
 			{
+				if (flag == 5)
+					break ;
+				ft_printf("%d\n", b->n);
 				ft_printf("Cabron\n");
 				ft_push_a(a, b);
+				b = b->next;
+				flag++;
 			}
 			break ;
 		}
