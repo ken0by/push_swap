@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:59:06 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/03 17:42:12 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/10 18:02:05 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,8 @@ void	ft_swap(t_lst *a, t_lst *b);
 
 /* FT_CHECK.C */
 int		ft_check(t_lst *a);
+
+/* FT_NBR_CHECK.C */
+int	nbr_check(t_lst *a);
 
 #endif

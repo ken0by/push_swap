@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_lst.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:16:36 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/01 21:31:01 by rodro            ###   ########.fr       */
+/*   Updated: 2023/04/10 15:26:43 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,12 @@ t_lst	*fill_lst(t_lst *a, char **b, int x)
 			}
 		}
 		i++;
+	}
+	i = nbr_check(a);
+	if (i == 1)
+	{
+		ft_printf("Error\n");
+		return (NULL);
 	}
 	return (a);
 }

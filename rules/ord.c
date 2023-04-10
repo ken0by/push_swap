@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 17:57:16 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/03 19:16:17 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/10 18:29:02 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,15 @@ int puta(t_lst *a, t_lst **b)
 		else
 			return (0);
 		if (a->n > aux->n)
+		{
+			aux = a;
+			while (aux)
+			{
+				ft_printf("a -> %d\n", aux->n);
+				aux = aux->next;
+			}
 			return (1);
+		}
 		ft_push_b(a, b);
 		a = aux;
 		aux = aux->next;
@@ -64,12 +72,16 @@ void ft_swap(t_lst *a, t_lst *b)
 			}
 			else if (aux1->n > aux2->n && aux1->n > aux->n && ft_count(a) > 0)
 			{
+				/* HAY ERROR CON EL STACK A AL ACABAR LA FUNCION
+				SI ARREGLAS ESTO CREO QUE YA ESTARIA */
 				flag = puta(a, &b);
-				aux = b;
-				while (aux)
+				aux = a;
+				aux1 = a;
+				ft_printf("flag -> %d\n", flag);
+				while (aux1)
 				{
-					ft_printf("b -> %d\n", aux->n);
-					aux = aux->next;
+					ft_printf("caca -> %d\n", aux1->n);
+					aux1 = aux1->next;
 				}
 				break ;
 			}
@@ -96,20 +108,19 @@ void ft_swap(t_lst *a, t_lst *b)
 			aux = a;
 		else
 		{
-			/* NO RELLENAS CORRECTAMENTE EL STACK B Y POR ESO DA UN BUCLE INFINITO SI
-			QUITAS EL IF DE FLAG */
-			flag = 0;
 			while (b)
 			{
-				if (flag == 5)
-					break ;
-				ft_printf("%d\n", b->n);
-				ft_printf("Cabron\n");
+				aux = b->next;
 				ft_push_a(a, b);
-				b = b->next;
-				flag++;
+				b = aux;
 			}
 			break ;
 		}
 	}
+
+	/* while (a)
+	{
+		ft_printf("%d\n", a->n);
+		a = a->next;
+	} */
 }

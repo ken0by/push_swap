@@ -1,49 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pp.c                                               :+:      :+:    :+:   */
+/*   ft_nbr_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/29 17:57:23 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/10 18:29:07 by rofuente         ###   ########.fr       */
+/*   Created: 2023/04/10 15:17:40 by rofuente          #+#    #+#             */
+/*   Updated: 2023/04/10 15:24:32 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	ft_lstfront(t_lst **lst, t_lst *new)
-{
-	t_lst	*s1;
-
-	s1 = lst[0];
-	lst[0] = new;
-	lst[0]->next = s1;
-}
-
-void	ft_push_a(t_lst *a, t_lst *b)
-{
-	ft_lstfront(&a, b);
-	ft_printf("pa\n");
-}
-
-void	ft_push_b(t_lst *a, t_lst **b)
+int	nbr_check(t_lst *a)
 {
 	t_lst	*aux;
 	t_lst	*aux1;
 
 	aux = a;
-	aux1 = b[0];
-	if (!b)
+	while (aux)
 	{
-		b[0] = malloc(sizeof(t_lst));
-		b[0]->n = aux->n;
-		b[0]->next = NULL;
+		aux1 = aux->next;
+		while (aux1)
+		{
+			if (aux1->n == aux->n)
+				return (1);
+			aux1 = aux1->next;
+		}
+		aux = aux->next;
 	}
-	else
-	{
-		aux->next = NULL;
-		ft_lstfront(b, a);
-	}
-	ft_printf("pb\n");
+	return (0);
 }
