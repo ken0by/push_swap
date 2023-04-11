@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:16:36 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/10 15:26:43 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/11 13:26:37 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_count(t_lst *a)
 	return (i);
 }
 
-static t_lst	*lstlast(t_lst *a)
+t_lst	*lstlast(t_lst *a)
 {
 	t_lst	*aux;
 

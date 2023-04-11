@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:59:06 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/10 18:02:05 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/11 13:26:47 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ t_lst	*fill_lst(t_lst *a, char **b, int x);
 t_lst	*lstnew(int content);
 int		ft_count(t_lst *a);
 void	lstadd_back(t_lst **a, t_lst *new);
+t_lst	*lstlast(t_lst *a);
 
 /* SS.C */
 void	lstdelone(t_lst *lst);
@@ -45,6 +46,16 @@ void	ft_swap_s(t_lst *a, t_lst *b);
 void	ft_push_a(t_lst *a, t_lst *b);
 void	ft_push_b(t_lst *a, t_lst **b);
 void	ft_lstfront(t_lst **lst, t_lst *new);
+
+/* RR.C */
+void	ft_rotate_a(t_lst *a);
+void	ft_rotate_b(t_lst *b);
+void	ft_rotate_r(t_lst *a, t_lst *b);
+
+/* RRR.C */
+void	ft_rrotate_a(t_lst *a);
+void	ft_rrotate_b(t_lst *b);
+void	ft_rrotate_r(t_lst *a, t_lst *b);
 
 /* ORD.C */
 void	ft_swap(t_lst *a, t_lst *b);
