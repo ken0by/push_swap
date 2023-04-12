@@ -6,38 +6,11 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 17:57:16 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/11 16:56:02 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/12 13:13:54 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-/* int puta(t_lst *a, t_lst **b)
-{
-	t_lst *aux;
-
-	while (a)
-	{
-		if (a->next)
-			aux = a->next;
-		else
-			return (0);
-		if (a->n > aux->n)
-		{
-			aux = a;
-			while (aux)
-			{
-				ft_printf("a -> %d\n", aux->n);
-				aux = aux->next;
-			}
-			return (1);
-		}
-		ft_push_b(a, b);
-		a = aux;
-		aux = aux->next;
-	}
-	return (0);
-} */
 
 void ft_swap(t_lst *a, t_lst *b)
 {
@@ -59,20 +32,32 @@ void ft_swap(t_lst *a, t_lst *b)
 			x = lstlast(a);
 			if (b)
 				y = lstlast(b);
+			if (aux->next)
+				aux1 = aux->next;
+			if (aux1->next)
+				aux2 = aux1->next;
 			/* EL SEGMENTATION FAULT DA AQUI SI LO COMENTO TODO BIEN */
 			/* if ((x->n < a->n) && (y->n < b->n))
 			{
 				ft_rotate_r(a, b);
 				ft_printf("rr\n");
 			} */
-			else if (x->n < a->n)
+			if ((x->n < a->n) || (a->n > aux1->n && a->n > aux2->n))
 			{
 				ft_rotate_a(a);
 				ft_printf("ra\n");
+				aux = a;
 			}
 			else if (b)
 			{
-				if (y->n < b->n)
+				if (b->next)
+					aux1 = aux->next;
+				if (aux1->next)
+				{
+					// ft_printf("hola\n");
+					aux2 = aux1->next;
+				}
+				if (y->n < b->n || (a->n > aux1->n && a->n > aux2->n))
 				{
 					ft_rotate_b(b);
 					ft_printf("rb\n");
@@ -80,13 +65,14 @@ void ft_swap(t_lst *a, t_lst *b)
 			}
 			if (aux->next)
 				aux1 = aux->next;
-			ft_printf("caca\n");
 			if (aux1->next)
-			{
-				ft_printf("hola\n");
 				aux2 = aux1->next;
+			else
+			{
+				flag = 0;
+				return;
 			}
-			if (aux->n > aux2->n && aux1->n > aux2->n && ft_count(a) > 1)
+			if (aux->n > aux2->n && aux1->n > aux2->n && ft_count(a) > 1 && ft_count(b) > 1)
 			{
 				ft_swap_s(a, b);
 				flag = 1;
@@ -98,9 +84,9 @@ void ft_swap(t_lst *a, t_lst *b)
 				flag = 1;
 				ft_printf("sa\n");
 			}
-			else if (aux1->n > aux2->n && aux1->n > aux->n && ft_count(a) > 0)
+			else if ((aux1->n > aux2->n && aux1->n > aux->n && ft_count(a) > 0) || (aux2->n > aux->n && aux2->n > aux1->n && ft_count(a) > 0))
 			{
-				// flag = puta(a, &b);
+				ft_printf("joder\n");
 				aux = a;
 				while (a)
 				{
@@ -134,7 +120,7 @@ void ft_swap(t_lst *a, t_lst *b)
 				aux1 = aux->next;
 			if (aux1->next)
 				aux2 = aux1->next;
-			if (aux->n < aux1->n && aux1->n > aux2->n && ft_count(a) > 1)
+			if (aux->n < aux1->n && aux1->n > aux2->n && ft_count(b) > 1)
 			{
 				ft_swap_b(aux, b);
 				flag = 1;

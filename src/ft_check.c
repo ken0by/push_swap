@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 16:30:40 by rodro             #+#    #+#             */
-/*   Updated: 2023/03/30 16:44:08 by rodro            ###   ########.fr       */
+/*   Updated: 2023/04/12 12:50:09 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_check(t_lst *a)
 	while (aux)
 	{
 		if (!aux->next)
-			break;
+			break ;
 		aux1 = aux->next;
 		if (aux->n != aux1->n)
 			return (0);
