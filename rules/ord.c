@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 17:57:16 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/12 13:13:54 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/12 17:48:13 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void ft_swap(t_lst *a, t_lst *b)
 				aux1 = aux->next;
 			if (aux1->next)
 				aux2 = aux1->next;
-			/* EL SEGMENTATION FAULT DA AQUI SI LO COMENTO TODO BIEN */
 			/* if ((x->n < a->n) && (y->n < b->n))
 			{
 				ft_rotate_r(a, b);
@@ -53,11 +52,8 @@ void ft_swap(t_lst *a, t_lst *b)
 				if (b->next)
 					aux1 = aux->next;
 				if (aux1->next)
-				{
-					// ft_printf("hola\n");
 					aux2 = aux1->next;
-				}
-				if (y->n < b->n || (a->n > aux1->n && a->n > aux2->n))
+				if (y->n > b->n || (a->n > aux1->n && a->n > aux2->n))
 				{
 					ft_rotate_b(b);
 					ft_printf("rb\n");
@@ -70,8 +66,9 @@ void ft_swap(t_lst *a, t_lst *b)
 			else
 			{
 				flag = 0;
-				return;
+				break ;
 			}
+			/* PONER COMPROBACIONES SOLO PARA LOS DOS PRIMEROS NUMEROS */
 			if (aux->n > aux2->n && aux1->n > aux2->n && ft_count(a) > 1 && ft_count(b) > 1)
 			{
 				ft_swap_s(a, b);
@@ -86,7 +83,8 @@ void ft_swap(t_lst *a, t_lst *b)
 			}
 			else if ((aux1->n > aux2->n && aux1->n > aux->n && ft_count(a) > 0) || (aux2->n > aux->n && aux2->n > aux1->n && ft_count(a) > 0))
 			{
-				ft_printf("joder\n");
+				/* AL SOLO TENER COMPROBACIONES PARA LOS DOS PRIMEROS NUMEROS, SI ESTAN ORDENADOS ENTRAR EN UN BUCLE QUE VAYA COMPROBANDO
+				QUE EL RESTO TAMBIEN ESTAN OREDENADOS, SINO LO ESTAN PASAR AL STACK B HASTA ESE NUMERO Y VOLVER A INICIALIZAR EL BUCLE */
 				aux = a;
 				while (a)
 				{
