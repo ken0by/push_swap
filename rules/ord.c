@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 17:57:16 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/12 17:48:13 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/13 13:57:17 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void ft_swap(t_lst *a, t_lst *b)
 			x = lstlast(a);
 			if (b)
 				y = lstlast(b);
-			if (aux->next)
+			/* if (aux->next)
 				aux1 = aux->next;
 			if (aux1->next)
-				aux2 = aux1->next;
+				aux2 = aux1->next; */
 			/* if ((x->n < a->n) && (y->n < b->n))
 			{
 				ft_rotate_r(a, b);
@@ -69,19 +69,19 @@ void ft_swap(t_lst *a, t_lst *b)
 				break ;
 			}
 			/* PONER COMPROBACIONES SOLO PARA LOS DOS PRIMEROS NUMEROS */
-			if (aux->n > aux2->n && aux1->n > aux2->n && ft_count(a) > 1 && ft_count(b) > 1)
+			/* if (aux->n > aux2->n && aux1->n > aux2->n && ft_count(a) > 1 && ft_count(b) > 1)
 			{
 				ft_swap_s(a, b);
 				flag = 1;
 				ft_printf("ss\n");
-			}
-			else if (aux->n > aux1->n && ft_count(a) > 1)
+			} */
+			/* else if (aux->n > aux1->n && ft_count(a) > 1)
 			{
 				ft_swap_a(aux, aux1);
 				flag = 1;
 				ft_printf("sa\n");
-			}
-			else if ((aux1->n > aux2->n && aux1->n > aux->n && ft_count(a) > 0) || (aux2->n > aux->n && aux2->n > aux1->n && ft_count(a) > 0))
+			} */
+			if ((aux1->n > aux2->n && aux1->n > aux->n && ft_count(a) > 0) || (aux2->n > aux->n && aux2->n > aux1->n && ft_count(a) > 0))
 			{
 				/* AL SOLO TENER COMPROBACIONES PARA LOS DOS PRIMEROS NUMEROS, SI ESTAN ORDENADOS ENTRAR EN UN BUCLE QUE VAYA COMPROBANDO
 				QUE EL RESTO TAMBIEN ESTAN OREDENADOS, SINO LO ESTAN PASAR AL STACK B HASTA ESE NUMERO Y VOLVER A INICIALIZAR EL BUCLE */

@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 17:57:23 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/10 18:29:07 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/13 13:57:56 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,6 @@ void	ft_push_b(t_lst *a, t_lst **b)
 		b[0]->next = NULL;
 	}
 	else
-	{
-		aux->next = NULL;
 		ft_lstfront(b, a);
-	}
 	ft_printf("pb\n");
 }
