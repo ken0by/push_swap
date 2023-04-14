@@ -6,20 +6,34 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:39:00 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/10 15:27:02 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/14 12:50:18 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static int ft_comp(char **s, int ac)
+static int	ft_error(void)
+{
+	ft_printf("Error\n");
+	return (0);
+}
+
+static int	ft_comp_arr(char **s, int j, int i)
+{
+	if ((s[j][i] >= '0' && s[j][i] <= '9')
+		|| s[j][i] == ' ' || s[j][i] == '-' || s[j][i] == '+')
+		i++;
+	else
+		return (0);
+	return (i);
+}
+
+static int	ft_comp(char **s, int j)
 {
 	int	i;
-	int	j;
 	int	neg;
 	int	p;
 
-	j = ac - 1;
 	while (j > 0)
 	{
 		neg = 0;
@@ -31,28 +45,21 @@ static int ft_comp(char **s, int ac)
 				neg++;
 			if (s[j][i] == '+')
 				p++;
-			if ((s[j][i] >= '0' && s[j][i] <= '9') || s[j][i] == ' ' || s[j][i] == '-' || s[j][i] == '+')
-				i++;
-			else
-			{
-				ft_printf("Error\n");
-				return (0);
-			}
+			i = ft_comp_arr(s, j, i);
+			if (i == 0)
+				return (ft_error());
 		}
 		if (neg > 1 || p > 1)
-		{
-			ft_printf("Error\n");
-			return (0);
-		}
+			return (ft_error());
 		j--;
 	}
 	return (1);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_lst *a;
-	t_lst *b;
+	t_lst	*a;
+	t_lst	*b;
 
 	if (ac < 2)
 	{
@@ -61,7 +68,7 @@ int main(int ac, char **av)
 	}
 	a = NULL;
 	b = NULL;
-	if (ft_comp(av, ac) == 0)
+	if (ft_comp(av, (ac - 1)) == 0)
 		return (0);
 	a = fill_lst(a, av, ac);
 	if (!a)
@@ -69,4 +76,3 @@ int main(int ac, char **av)
 	ft_swap(a, b);
 	return (0);
 }
-/* DA SEGMENTATION FAULT CUANDO LOS AV SON 2 3 "1"/"-1" */

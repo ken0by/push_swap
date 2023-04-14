@@ -1,49 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rr.c                                               :+:      :+:    :+:   */
+/*   lst.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/11 12:31:18 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/14 11:21:41 by rofuente         ###   ########.fr       */
+/*   Created: 2023/04/14 12:29:20 by rofuente          #+#    #+#             */
+/*   Updated: 2023/04/14 12:36:58 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-t_lst	*ft_rotate_a(t_lst *a)
+t_lst	*lstlast(t_lst *a)
 {
 	t_lst	*aux;
 
 	aux = a;
-	a = a->next;
-	aux->next = NULL;
-	lstadd_back(&a, aux);
-	ft_printf("ra\n");
-	return (a);
+	while (aux)
+	{
+		if (aux->next == NULL)
+			break ;
+		aux = aux->next;
+	}
+	return (aux);
 }
 
-t_lst	*ft_rotate_b(t_lst *b)
+void	lstadd_back(t_lst **a, t_lst *new)
 {
 	t_lst	*aux;
 
-	aux = b;
-	b = b->next;
-	aux->next = NULL;
-	lstadd_back(&b, aux);
-	ft_printf("rb\n");
-	return (b);
+	if (!a)
+		return ;
+	if (!*a)
+	{
+		*a = new;
+		return ;
+	}
+	aux = lstlast(*a);
+	aux->next = new;
 }
 
-void	ft_rotate_r(t_lst *a, t_lst *b)
+t_lst	*lstnew(int content)
 {
-	t_lst	*aux;
-	t_lst	*aux1;
+	t_lst	*new;
 
-	aux = ft_rotate_a(a);
-	aux1 = ft_rotate_b(b);
-	a = aux;
-	b = aux1;
-	ft_printf("rr\n");
+	new = malloc(sizeof(t_lst));
+	if (!new)
+		return (NULL);
+	new->n = content;
+	new->next = NULL;
+	return (new);
 }

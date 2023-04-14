@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:16:36 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/12 12:53:05 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/14 12:36:14 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,53 +27,35 @@ int	ft_count(t_lst *a)
 	return (i);
 }
 
-t_lst	*lstlast(t_lst *a)
+static void	ft_split_lst(char **b, t_lst *a, int i)
 {
-	t_lst	*aux;
+	int		j;
+	char	**s;
+	t_lst	*new;
 
-	aux = a;
-	while (aux)
+	s = ft_split(b[i], ' ');
+	j = 0;
+	while (s[j])
 	{
-		if (aux->next == NULL)
-			break ;
-		aux = aux->next;
+		new = lstnew(ft_atoi(s[j]));
+		lstadd_back(&a, new);
+		j++;
 	}
-	return (aux);
 }
 
-void	lstadd_back(t_lst **a, t_lst *new)
-{
-	t_lst	*aux;
-
-	if (!a)
-		return ;
-	if (!*a)
-	{
-		*a = new;
-		return ;
-	}
-	aux = lstlast(*a);
-	aux->next = new;
-}
-
-t_lst	*lstnew(int content)
+static t_lst	*ft_add_node(char **b, t_lst *a, int i)
 {
 	t_lst	*new;
 
-	new = malloc(sizeof(t_lst));
-	if (!new)
-		return (NULL);
-	new->n = content;
-	new->next = NULL;
-	return (new);
+	new = lstnew(ft_atoi(b[i]));
+	lstadd_back(&a, new);
+	return (a);
 }
 
 t_lst	*fill_lst(t_lst *a, char **b, int x)
 {
 	int		i;
 	int		j;
-	char	**s;
-	t_lst	*new;
 
 	i = 1;
 	while (i < x)
@@ -82,21 +64,9 @@ t_lst	*fill_lst(t_lst *a, char **b, int x)
 		while (b[i][j])
 			j++;
 		if (j == 1)
-		{
-			new = lstnew(ft_atoi(b[i]));
-			lstadd_back(&a, new);
-		}
+			a = ft_add_node(b, a, i);
 		else
-		{
-			s = ft_split(b[i], ' ');
-			j = 0;
-			while (s[j])
-			{
-				new = lstnew(ft_atoi(s[j]));
-				lstadd_back(&a, new);
-				j++;
-			}
-		}
+			ft_split_lst(b, a, i);
 		i++;
 	}
 	i = nbr_check(a);
