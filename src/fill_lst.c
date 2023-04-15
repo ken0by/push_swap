@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_lst.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:16:36 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/14 12:36:14 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/15 22:10:06 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_count(t_lst *a)
 	return (i);
 }
 
-static void	ft_split_lst(char **b, t_lst *a, int i)
+static t_lst	*ft_split_lst(char **b, t_lst *a, int i)
 {
 	int		j;
 	char	**s;
@@ -41,6 +41,7 @@ static void	ft_split_lst(char **b, t_lst *a, int i)
 		lstadd_back(&a, new);
 		j++;
 	}
+	return (a);
 }
 
 static t_lst	*ft_add_node(char **b, t_lst *a, int i)
@@ -66,7 +67,7 @@ t_lst	*fill_lst(t_lst *a, char **b, int x)
 		if (j == 1)
 			a = ft_add_node(b, a, i);
 		else
-			ft_split_lst(b, a, i);
+			a = ft_split_lst(b, a, i);
 		i++;
 	}
 	i = nbr_check(a);

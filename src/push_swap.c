@@ -3,36 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:39:00 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/14 12:50:18 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/15 23:31:38 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static int	ft_error(void)
+static int ft_error(void)
 {
 	ft_printf("Error\n");
 	return (0);
 }
 
-static int	ft_comp_arr(char **s, int j, int i)
+static int ft_comp_arr(char **s, int j, int i)
 {
-	if ((s[j][i] >= '0' && s[j][i] <= '9')
-		|| s[j][i] == ' ' || s[j][i] == '-' || s[j][i] == '+')
+	if ((s[j][i] >= '0' && s[j][i] <= '9') || s[j][i] == ' ' || s[j][i] == '-' || s[j][i] == '+')
 		i++;
 	else
 		return (0);
 	return (i);
 }
 
-static int	ft_comp(char **s, int j)
+static int ft_comp(char **s, int j)
 {
-	int	i;
-	int	neg;
-	int	p;
+	int i;
+	int neg;
+	int p;
 
 	while (j > 0)
 	{
@@ -56,10 +55,11 @@ static int	ft_comp(char **s, int j)
 	return (1);
 }
 
-int	main(int ac, char **av)
+int main(int ac, char **av)
 {
-	t_lst	*a;
-	t_lst	*b;
+	t_lst *a;
+	t_lst *b;
+	//t_lst *aux;
 
 	if (ac < 2)
 	{
@@ -73,6 +73,12 @@ int	main(int ac, char **av)
 	a = fill_lst(a, av, ac);
 	if (!a)
 		return (0);
-	ft_swap(a, b);
+	a = ft_swap(&a, b);
+	/* aux = a;
+	while (aux)
+	{
+		ft_printf("a -> %d\n", aux->n);
+		aux = aux->next;
+	} */
 	return (0);
 }

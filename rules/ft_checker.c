@@ -1,51 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rr.c                                               :+:      :+:    :+:   */
+/*   ft_checker.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/11 12:31:18 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/15 21:03:19 by rodro            ###   ########.fr       */
+/*   Created: 2023/04/13 13:12:45 by rofuente          #+#    #+#             */
+/*   Updated: 2023/04/15 23:43:47 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-t_lst	*ft_rotate_a(t_lst *a, int i)
-{
-	t_lst	*aux;
-
-	aux = a;
-	a = a->next;
-	aux->next = NULL;
-	lstadd_back(&a, aux);
-	if (i == 0)
-		ft_printf("ra\n");
-	return (a);
-}
-
-t_lst	*ft_rotate_b(t_lst *b, int i)
-{
-	t_lst	*aux;
-
-	aux = b;
-	b = b->next;
-	aux->next = NULL;
-	lstadd_back(&b, aux);
-	if (i == 0)
-		ft_printf("rb\n");
-	return (b);
-}
-
-void	ft_rotate_r(t_lst *a, t_lst *b)
+int	ft_check_pa(t_lst **a)
 {
 	t_lst	*aux;
 	t_lst	*aux1;
 
-	aux = ft_rotate_a(a, 1);
-	aux1 = ft_rotate_b(b, 1);
-	a = aux;
-	b = aux1;
-	ft_printf("rr\n");
+	aux = a[0];
+	while (aux)
+	{
+		if (aux->next)
+			aux1 = aux->next;
+		else
+			return (0);
+		if (aux->n > aux1->n)
+			return (1);
+		aux = aux->next;
+	}
+	return (0);
 }

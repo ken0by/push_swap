@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:59:06 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/13 18:42:44 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/15 23:43:36 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,20 @@ void	ft_push_b(t_lst *a, t_lst **b);
 void	ft_lstfront(t_lst **lst, t_lst *new);
 
 /* RR.C */
-t_lst	*ft_rotate_a(t_lst *a);
-t_lst	*ft_rotate_b(t_lst *b);
+t_lst	*ft_rotate_a(t_lst *a, int i);
+t_lst	*ft_rotate_b(t_lst *b, int i);
 void	ft_rotate_r(t_lst *a, t_lst *b);
 
 /* RRR.C */
-void	ft_rrotate_a(t_lst *a);
-void	ft_rrotate_b(t_lst *b);
+t_lst	*ft_rrotate_a(t_lst *a, int i);
+t_lst	*ft_rrotate_b(t_lst *b, int i);
 void	ft_rrotate_r(t_lst *a, t_lst *b);
 
 /* FT_MOVES.C */
-void	ft_swap(t_lst *a, t_lst *b);
+t_lst	*ft_swap(t_lst **a, t_lst *b);
+
+/* FT_CHECKER.C */
+int		ft_check_pa(t_lst **a);
 
 /* FT_CHECK.C */
 int		ft_check(t_lst *a);
