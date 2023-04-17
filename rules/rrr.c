@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rrr.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 13:04:34 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/15 21:01:53 by rodro            ###   ########.fr       */
+/*   Updated: 2023/04/17 19:41:16 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,14 @@ t_lst	*ft_rrotate_b(t_lst *b, int i)
 	return (b);
 }
 
-void	ft_rrotate_r(t_lst *a, t_lst *b)
+void	ft_rrotate_r(t_lst **a, t_lst **b)
 {
-	ft_rrotate_a(a, 1);
-	ft_rrotate_b(b, 1);
+	t_lst	*aux;
+	t_lst	*aux1;
+
+	aux = ft_rrotate_a(a[0], 1);
+	aux1 = ft_rrotate_b(b[0], 1);
+	a[0] = aux;
+	b[0] = aux1;
 	ft_printf("rrr\n");
 }
