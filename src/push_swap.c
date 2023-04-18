@@ -6,17 +6,11 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:39:00 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/17 20:06:03 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/18 19:15:42 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-static int	ft_error(void)
-{
-	ft_printf("Error\n");
-	return (0);
-}
 
 static int	ft_comp_arr(char **s, int j, int i)
 {
@@ -26,6 +20,35 @@ static int	ft_comp_arr(char **s, int j, int i)
 	else
 		return (0);
 	return (i);
+}
+
+static int	ft_check_maxmin(char **s)
+{
+	int		i;
+	int		j;
+
+	i = 1;
+	while (s[i])
+	{
+		j = 0;
+		while (s[i][j])
+			j++;
+		if (j == 10 || (j == 11 && s[i][0] == '-'))
+		{
+			if (s[i][0] == '-')
+			{
+				if (ft_strncmp(s[i], ft_itoa(-2147483648), 11) > 0)
+					return (ft_error());
+			}
+			else
+				if (ft_strncmp(s[i], ft_itoa(2147483647), 10) > 0)
+					return (ft_error());
+		}
+		else if (j >= 11)
+			return (ft_error());
+		i++;
+	}
+	return (1);
 }
 
 static int	ft_comp(char **s, int j)
@@ -68,11 +91,11 @@ int	main(int ac, char **av)
 	}
 	a = NULL;
 	b = NULL;
-	if (ft_comp(av, (ac - 1)) == 0)
+	if (ft_comp(av, (ac - 1)) == 0 || ft_check_maxmin(av) == 0)
 		return (0);
 	a = fill_lst(a, av, ac);
 	if (!a)
-		return (0);
+		return (ft_error());
 	a = ft_swap(&a, b);
 	return (0);
 }

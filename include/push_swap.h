@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:59:06 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/17 20:07:45 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/18 17:45:09 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdio.h>
 # include <string.h>
 
-/* NO SE SI IMPLEMENTAR LA LIBFT O NO */
 # include "../libft/include/libft.h"
 # include "../libft/ft_printf/include/ft_printf.h"
 # include "../libft/gnl/include/get_next_line.h"
@@ -33,6 +32,11 @@ typedef struct t_lst
 t_lst	*fill_lst(t_lst *a, char **b, int x);
 t_lst	*lstnew(int content);
 int		ft_count(t_lst *a);
+void	lstadd_back(t_lst **a, t_lst *new);
+t_lst	*lstlast(t_lst *a);
+
+/* LST.C */
+t_lst	*lstnew(int content);
 void	lstadd_back(t_lst **a, t_lst *new);
 t_lst	*lstlast(t_lst *a);
 
@@ -68,5 +72,9 @@ int		ft_check(t_lst *a);
 
 /* FT_NBR_CHECK.C */
 int		nbr_check(t_lst *a);
+
+/* FT_ERROR.C */
+int		ft_error(void);
+t_lst	*ft_free_lst(t_lst *a);
 
 #endif
