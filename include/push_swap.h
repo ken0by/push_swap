@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:59:06 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/18 17:45:09 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/19 18:58:17 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	lstadd_back(t_lst **a, t_lst *new);
 t_lst	*lstlast(t_lst *a);
 
 /* SS.C */
-void	lstdelone(t_lst *lst);
+int		lstsize(t_lst *a);
 void	ft_swap_a(t_lst *a, t_lst *aux);
 void	ft_swap_b(t_lst *a, t_lst *b);
 void	ft_swap_s(t_lst *a, t_lst *b);
@@ -76,5 +76,8 @@ int		nbr_check(t_lst *a);
 /* FT_ERROR.C */
 int		ft_error(void);
 t_lst	*ft_free_lst(t_lst *a);
+
+/* RADIX.C */
+t_lst	*ft_radix(t_lst **a, t_lst **b);
 
 #endif

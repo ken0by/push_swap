@@ -3,22 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ss.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 15:36:42 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/18 19:00:05 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/19 17:41:16 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	lstdelone(t_lst *lst)
+/* void	lstdelone(t_lst *lst)
 {
 	if (!lst)
 		return ;
 	lst->n = 0;
 	free(lst);
 	lst = 0;
+} */
+
+int	lstsize(t_lst *a)
+{
+	int		i;
+	t_lst	*aux;
+
+	i = 0;
+	aux = a;
+	while (aux)
+	{
+		i++;
+		aux = aux->next;
+	}
+	return (i);
 }
 
 void	ft_swap_a(t_lst *a, t_lst *aux)

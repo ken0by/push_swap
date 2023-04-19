@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pp.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 17:57:23 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/18 18:49:31 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/19 19:06:38 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	ft_push_b(t_lst *a, t_lst **b)
 	{
 		b[0] = malloc(sizeof(t_lst));
 		b[0]->n = a->n;
+		b[0]->p = a->p;
 		b[0]->next = NULL;
 	}
 	else

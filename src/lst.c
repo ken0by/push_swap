@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 12:29:20 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/14 12:36:58 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/19 17:57:57 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ t_lst	*lstnew(int content)
 	if (!new)
 		return (NULL);
 	new->n = content;
+	new->p = 0;
 	new->next = NULL;
 	return (new);
 }

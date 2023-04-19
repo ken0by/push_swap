@@ -3,11 +3,11 @@ LIB	=	ar rcs
 RM	=	rm -f
 
 CC	=	gcc
-CFLAGS	=	-Wall -Wextra -Werror -I ./include -I ./libft/include/ -g3 -fsanitize=address
+CFLAGS	=	-Wall -Wextra -Werror -I ./include -I ./libft/include/
 
 NAME	=	push_swap
 
-RR	=	ss.c pp.c ft_moves.c rr.c rrr.c ft_checker.c
+RR	=	ss.c pp.c ft_moves.c rr.c rrr.c ft_checker.c ft_radix.c
 SS	=	push_swap.c fill_lst.c ft_check.c ft_nbr_check.c lst.c ft_error.c
 
 SRCS_DIR	=	./src/
