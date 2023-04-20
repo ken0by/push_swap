@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:39:00 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/20 14:25:42 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/20 17:22:36 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ static int	ft_check_maxmin(char **s)
 			if (s[i][0] == '-')
 			{
 				if (ft_strncmp(s[i], ft_itoa(-2147483648), 11) > 0)
-					return (ft_error());
+					return (0);
 			}
 			else
 				if (ft_strncmp(s[i], ft_itoa(2147483647), 10) > 0)
-					return (ft_error());
+					return (0);
 		}
 		else if (j >= 11)
-			return (ft_error());
+			return (0);
 		i++;
 	}
 	return (1);
@@ -70,10 +70,10 @@ static int	ft_comp(char **s, int j)
 				p++;
 			i = ft_comp_arr(s, j, i);
 			if (i == 0)
-				return (ft_error());
+				return (0);
 		}
 		if (neg > 1 || p > 1)
-			return (ft_error());
+			return (0);
 		j--;
 	}
 	return (1);
@@ -83,24 +83,24 @@ int	main(int ac, char **av)
 {
 	t_lst	*a;
 	t_lst	*b;
-
+	/* t_lst *aux; */
 	if (ac < 2)
-	{
-		ft_printf("Error\n");
 		return (0);
-	}
 	a = NULL;
 	b = NULL;
 	if (ft_comp(av, (ac - 1)) == 0 || ft_check_maxmin(av) == 0)
-		return (0);
+		return (ft_error());
 	a = fill_lst(a, av, ac);
 	if (!a)
 		return (ft_error());
-	//a = ft_radix(&a, &b);
-	if (ac <= 41)
+	if (ac == 2)
+		return (0);
+	if (ac == 3)
+		a = ft_radix(&a, &b);
+	else if (ac <= 41)
 		a = ft_swap(&a, b);
 	else
 		a = ft_radix(&a, &b);
-	//system("leaks push_swap");
+	system("leaks push_swap");
 	return (0);
 }

@@ -3,7 +3,7 @@ LIB	=	ar rcs
 RM	=	rm -f
 
 CC	=	gcc
-CFLAGS	=	-Wall -Wextra -Werror -I ./include -I ./libft/include/ -g3 -fsanitize=address
+CFLAGS	=	-Wall -Wextra -Werror -I ./include -I ./libft/include/
 
 NAME	=	push_swap
 
