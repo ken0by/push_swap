@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 12:31:18 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/17 17:06:28 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/20 13:57:04 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,17 @@ void	ft_rotate_r(t_lst **a, t_lst **b)
 	a[0] = aux;
 	b[0] = aux1;
 	ft_printf("rr\n");
+}
+
+t_lst	*ft_ra(t_lst **a, int i)
+{
+	t_lst	*aux;
+
+	aux = *a;
+	*a = (*a)->next;
+	aux->next = NULL;
+	lstadd_back(a, aux);
+	if (i == 0)
+		ft_printf("ra\n");
+	return (*a);
 }

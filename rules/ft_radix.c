@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_radix.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/19 16:28:32 by rodro             #+#    #+#             */
-/*   Updated: 2023/04/19 19:13:39 by rodro            ###   ########.fr       */
+/*   Created: 2023/04/20 13:28:45 by rofuente          #+#    #+#             */
+/*   Updated: 2023/04/20 14:27:56 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int	ft_itob(int n)
 {
-	//int	bit[32];
 	int	i;
 
 	i = 0;
@@ -64,13 +63,16 @@ static int	ft_max_size(t_lst *a)
 
 static void	ft_pr(t_lst **a, t_lst **b, int i)
 {
+	t_lst	*aux;
+
 	if (((a[0]->p)>>i & 1) == 0)
 	{
-		ft_push_b(a[0], b);
-		a[0] = a[0]->next;
+		aux = (*a)->next;
+		ft_push_b(*a, b);
+		*a = aux;
 	}
 	else
-		ft_rotate_a(a[0], 0);
+		ft_ra(a, 0);
 }
 
 t_lst	*ft_radix(t_lst **a, t_lst **b)
@@ -79,6 +81,7 @@ t_lst	*ft_radix(t_lst **a, t_lst **b)
 	int	j;
 	int	max;
 	int	max_size;
+	t_lst	*aux;
 
 	ft_plst(*a);
 	max = lstsize(*a);
@@ -89,13 +92,15 @@ t_lst	*ft_radix(t_lst **a, t_lst **b)
 		j = 0;
 		while (j < max)
 		{
+
 			ft_pr(a, b, i);
 			j++;
 		}
 		while (*b)
 		{
+			aux = (*b)->next;
 			ft_push_a(a, *b);
-			b[0] = b[0]->next;
+			*b = aux;
 		}
 		i++;
 	}
