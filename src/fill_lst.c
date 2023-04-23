@@ -3,29 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   fill_lst.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:16:36 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/18 19:01:11 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/23 17:15:16 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static void	ft_free_arr(char **s)
+static int	ft_comp_a(char *b)
 {
-	int	i;
+	int	j;
 
-	i = 0;
-	while (s[i])
-		i++;
-	i--;
-	while (i >= 0)
+	j = 0;
+	while (b[j])
 	{
-		free (s[i]);
-		i--;
+		if (b[j] >= '0' && b[j] <= '9')
+			j++;
+		else
+			return (0);
 	}
-	free (s);
+	return (j);
 }
 
 int	ft_count(t_lst *a)
@@ -80,19 +79,21 @@ t_lst	*fill_lst(t_lst *a, char **b, int x)
 	i = 1;
 	while (i < x)
 	{
-		j = 0;
-		while (b[i][j])
-			j++;
-		if (j == 1)
-			a = ft_add_node(b, a, i);
-		else
-			a = ft_split_lst(b, a, i);
-		if (!a)
-			return (NULL);
+		j = ft_comp_a(b[i]);
+		if (j != 0)
+		{
+			if (j == 1)
+				a = ft_add_node(b, a, i);
+			else
+				a = ft_split_lst(b, a, i);
+			if (!a)
+				return (NULL);
+		}
 		i++;
 	}
 	i = nbr_check(a);
 	if (i == 1)
 		return (NULL);
+	ft_plst(a);
 	return (a);
 }

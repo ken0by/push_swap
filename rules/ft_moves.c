@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_moves.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 13:12:45 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/20 14:28:20 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/23 21:14:33 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static int	ft_check_revrot(t_lst **a, t_lst **b, t_lst *aux, t_lst *aux1)
+int	ft_check_revrot(t_lst **a, t_lst **b, t_lst *aux, t_lst *aux1)
 {
 	t_lst	*aux2;
 	t_lst	*aux3;
@@ -39,7 +39,7 @@ static int	ft_check_revrot(t_lst **a, t_lst **b, t_lst *aux, t_lst *aux1)
 	return (0);
 }
 
-static int	ft_check_rotation(t_lst **a, t_lst **b, t_lst *aux, t_lst *aux1)
+int	ft_check_rotation(t_lst **a, t_lst **b, t_lst *aux, t_lst *aux1)
 {
 	t_lst	*aux2;
 	t_lst	*aux3;
@@ -66,7 +66,7 @@ static int	ft_check_rotation(t_lst **a, t_lst **b, t_lst *aux, t_lst *aux1)
 	return (0);
 }
 
-static int	ft_check_push(t_lst **a, t_lst **b, t_lst *aux1, int flag)
+int	ft_check_push(t_lst **a, t_lst **b, t_lst *aux1, int flag)
 {
 	t_lst	*aux;
 
@@ -80,7 +80,6 @@ static int	ft_check_push(t_lst **a, t_lst **b, t_lst *aux1, int flag)
 			ft_push_b(a[0], b);
 			a[0] = aux;
 		}
-		flag = 1;
 	}
 	if (flag == 0 && b[0])
 	{
@@ -88,21 +87,20 @@ static int	ft_check_push(t_lst **a, t_lst **b, t_lst *aux1, int flag)
 		{
 			if (b[0] && ft_check_pa(a) == 1)
 				break ;
-			aux = b[0];
-			b[0] = b[0]->next;
-			aux->next = NULL;
-			ft_push_a(a, aux);
+			aux = (*b)->next;
+			ft_push_a(a, *b);
+			*b = aux;
 		}
 	}
 	return (flag);
 }
 
-static int	ft_check_a(t_lst **a)
+int	ft_check_a(t_lst **a)
 {
 	t_lst	*aux;
 	t_lst	*aux1;
 
-	aux = a[0];
+	aux = *a;
 	while (aux)
 	{
 		if (aux->next)
@@ -114,85 +112,29 @@ static int	ft_check_a(t_lst **a)
 	return (0);
 }
 
-t_lst	*ft_swap(t_lst **a, t_lst *b)
+t_lst	*ft_swap(t_lst **a, t_lst **b)
 {
 	t_lst	*aux;
-	t_lst	*aux1;
-	t_lst	*aux2;
-	t_lst	*aux3;
 	int		flag;
 
 	flag = 1;
-	aux3 = NULL;
-	if (ft_count(a[0]) < 4)
-	{
-		aux = a[0];
-		aux1 = aux->next;
-		aux2 = aux1->next;
-		if (aux->n > aux1->n && aux->n > aux2->n && aux1->n < aux2->n)
-			return (ft_rotate_a(a[0], 0));
-		if (aux2->n < aux->n && aux2->n < aux1->n && aux->n < aux1->n)
-			return (ft_rrotate_a(a[0], 0));
-	}
 	while (flag == 1)
 	{
-		if (b && b->next)
-			aux3 = b->next;
+		flag = ft_ss(flag, *a, a, b);
+		aux = ft_iter(a);
+		if (aux->next && aux->n > (aux->next)->n)
+			flag = 2;
 		else
-			aux3 = NULL;
-		aux = a[0];
-		if (aux->next)
-			aux1 = aux->next;
-		if (b)
 		{
-			aux2 = b;
-			if (b->next)
-				aux3 = b->next;
+			flag = ft_check_a(a);
+			if (flag == 0 && !*b)
+				return (*a);
 		}
-		if ((flag == 1) && (aux->n > aux1->n) && aux3 && aux2
-			&& (aux2->n < aux3->n) && ft_count(a[0]) > 1 && ft_count(b) > 1)
-		{
-			ft_swap_s(a[0], b);
-			flag = 1;
-			ft_printf("ss\n");
-		}
-		else if ((flag == 1) && (aux->n > aux1->n) && ft_count(a[0]) > 1)
-		{
-			ft_swap_a(aux, aux1);
-			flag = 1;
-			ft_printf("sa\n");
-		}
-		else if ((flag == 1) && aux3 && (aux2->n < aux3->n) && ft_count(b) > 1)
-		{
-			ft_swap_b(aux2, aux3);
-			flag = 1;
-			ft_printf("sb\n");
-		}
-		else
-			flag = 0;
-		while (aux)
-		{
-			if (aux->next)
-				aux1 = aux->next;
-			else
-				break ;
-			if (aux->n > aux1->n)
-			{
-				flag = 2;
-				break ;
-			}
-			aux = aux->next;
-		}
-		if (flag == 1)
-			flag = ft_check_revrot(a, &b, a[0]->next, aux3);
-		if (flag == 1)
-			flag = ft_check_rotation(a, &b, a[0]->next, aux3);
-		if (flag == 2 || flag == 0)
-			flag = ft_check_push(a, &b, aux, flag);
-		if (b)
+		ft_check_moves(a, b, aux, flag);
+		if (*b)
 			flag = 1;
 		else
 			flag = ft_check_a(a);
 	}
-	return (a[0]);
+	return (*a);
 }

@@ -6,20 +6,11 @@
 /*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 15:36:42 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/19 17:41:16 by rodro            ###   ########.fr       */
+/*   Updated: 2023/04/21 22:35:50 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-/* void	lstdelone(t_lst *lst)
-{
-	if (!lst)
-		return ;
-	lst->n = 0;
-	free(lst);
-	lst = 0;
-} */
 
 int	lstsize(t_lst *a)
 {

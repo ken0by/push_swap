@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:59:06 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/20 14:27:31 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/23 17:07:43 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,21 @@ t_lst	*ft_rrotate_b(t_lst *b, int i);
 void	ft_rrotate_r(t_lst **a, t_lst **b);
 
 /* FT_MOVES.C */
-t_lst	*ft_swap(t_lst **a, t_lst *b);
+t_lst	*ft_swap(t_lst **a, t_lst **b);
+int		ft_check_revrot(t_lst **a, t_lst **b, t_lst *aux, t_lst *aux1);
+int		ft_check_rotation(t_lst **a, t_lst **b, t_lst *aux, t_lst *aux1);
+int		ft_check_push(t_lst **a, t_lst **b, t_lst *aux1, int flag);
+int		ft_check_a(t_lst **a);
+
+/* FT_MOVES2.C */
+int		ft_ss(int flag, t_lst *aux, t_lst **a, t_lst **b);
+t_lst	*ft_exception4(t_lst **a);
+void	ft_check_moves(t_lst **a, t_lst **b, t_lst *aux, int flag);
 
 /* FT_CHECKER.C */
 int		ft_check_pa(t_lst **a);
+void	ft_pa(t_lst **a, t_lst **b);
+t_lst	*ft_iter(t_lst **a);
 
 /* FT_CHECK.C */
 int		ft_check(t_lst *a);
@@ -76,9 +87,16 @@ int		nbr_check(t_lst *a);
 
 /* FT_ERROR.C */
 int		ft_error(void);
+void	ft_free_arr(char **s);
 t_lst	*ft_free_lst(t_lst *a);
+t_lst	*ft_exception(t_lst **a, t_lst **b);
+t_lst	*ft_exception_3(t_lst **a, t_lst **b);
 
 /* RADIX.C */
 t_lst	*ft_radix(t_lst **a, t_lst **b);
+void	ft_plst(t_lst *a);
+
+/* FT_CONDITIONS.C */
+void	ft_conditions(t_lst **a, t_lst **b, int ac);
 
 #endif

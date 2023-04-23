@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:39:00 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/20 17:22:36 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/23 21:08:17 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	main(int ac, char **av)
 {
 	t_lst	*a;
 	t_lst	*b;
-	/* t_lst *aux; */
+
 	if (ac < 2)
 		return (0);
 	a = NULL;
@@ -93,14 +93,8 @@ int	main(int ac, char **av)
 	a = fill_lst(a, av, ac);
 	if (!a)
 		return (ft_error());
-	if (ac == 2)
+	if (ft_check_a(&a) == 0)
 		return (0);
-	if (ac == 3)
-		a = ft_radix(&a, &b);
-	else if (ac <= 41)
-		a = ft_swap(&a, b);
-	else
-		a = ft_radix(&a, &b);
-	system("leaks push_swap");
+	ft_conditions(&a, &b, ac);
 	return (0);
 }
