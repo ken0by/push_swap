@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:39:00 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/24 20:33:07 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/24 21:14:55 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,31 +22,6 @@ static int	ft_comp_arr(char **s, int j, int i)
 	return (i);
 }
 
-static int	ft_cmp(char *s)
-{
-	char	*aux;
-
-	if (s[0] == '-')
-	{
-		aux = ft_itoa(INT_MIN);
-		if (ft_strncmp(s, aux, 11) > 0)
-		{
-			free (aux);
-			return (0);
-		}
-	}
-	else
-	{
-		aux = ft_itoa(INT_MAX);
-		if (ft_strncmp(s, aux, 10) > 0)
-		{
-			free (aux);
-			return (0);
-		}
-	}
-	return (1);
-}
-
 static int	ft_check_maxmin(char **s)
 {
 	int		i;
@@ -60,8 +35,14 @@ static int	ft_check_maxmin(char **s)
 			j++;
 		if (j == 10 || (j == 11 && s[i][0] == '-'))
 		{
-			if (ft_cmp(s[i]) == 0)
-				return (0);
+			if (s[i][0] == '-')
+			{
+				if (ft_strncmp(s[i], ft_itoa(-2147483648), 11) > 0)
+					return (0);
+			}
+			else
+				if (ft_strncmp(s[i], ft_itoa(2147483647), 10) > 0)
+					return (0);
 		}
 		else if (j >= 11)
 			return (0);
@@ -97,30 +78,30 @@ static int	ft_comp(char **s, int j)
 	}
 	return (1);
 }
-void ft_leaks(void)
+
+void	ft_leaks()
 {
 	system("leaks push_swap");
 }
-int	main(int argc, char **argv)
+
+int	main(int ac, char **av)
 {
 	t_lst	*a;
 	t_lst	*b;
 
 	atexit(ft_leaks);
-	if (argc <= 2)
+	if (ac < 2)
 		return (0);
 	a = NULL;
 	b = NULL;
-	if (ft_comp(argv, (argc - 1)) == 0 || ft_check_maxmin(argv) == 0)
+	if (ft_comp(av, (ac - 1)) == 0 || ft_check_maxmin(av) == 0)
 		return (ft_error());
-	a = fill_lst(a, argv, argc);
+	a = fill_lst(a, av, ac);
 	if (!a)
 		return (ft_error());
 	if (ft_check_a(&a) == 0)
 		return (0);
-	ft_conditions(&a, &b, argc);
+	ft_conditions(&a, &b, ac);
+	//ft_free_lst(&a);
 	return (0);
 }
-
-/* LOS LEAKS QUE ME DAN SON LOS NUMEROS QUE PASO COMO PARAMETRO, PERO CON LOS INT MIN/MAX CUANO DA ERROR
-TAMBIEN DAN LEAKS POR QUE NO SE LIBERAN NS XQ Y CREO QUE YA */

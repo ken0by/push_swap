@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 15:24:23 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/24 18:17:44 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/24 21:14:28 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,21 @@ int	ft_error(void)
 {
 	write(2, "Error\n", 6);
 	return (0);
+}
+
+void	ft_free_lst(t_lst **a)
+{
+	t_lst	*aux;
+
+	while (*a)
+	{
+		aux = (*a)->next;
+		(*a)->n = 0;
+		(*a)->next = NULL;
+		(*a) = aux;
+	}
+	free (*a);
+	*a = NULL;
 }
 
 t_lst	*ft_exception(t_lst **a, t_lst **b)
