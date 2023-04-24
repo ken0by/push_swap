@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 15:36:42 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/24 18:23:37 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/24 20:27:55 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	ft_swap_a(t_lst *a, t_lst *aux)
 	t_lst	*aux2;
 
 	aux2 = aux;
-	aux->n = a->n;
-	aux->p = a->p;
-	a->n = aux2->n;
-	a->p = aux2->p;
+	aux = a;
+	aux->next = aux2->next;
+	a = aux2;
+	a->next = aux;
 }
 
 void	ft_swap_b(t_lst *b, t_lst *aux)
@@ -43,10 +43,10 @@ void	ft_swap_b(t_lst *b, t_lst *aux)
 	t_lst	*aux2;
 
 	aux2 = aux;
-	aux->n = b->n;
-	aux->p = b->p;
-	b->n = aux2->n;
-	b->p = aux2->p;
+	aux = b;
+	aux->next = aux2->next;
+	b = aux2;
+	b->next = aux;
 }
 
 void	ft_swap_s(t_lst *a, t_lst *b)

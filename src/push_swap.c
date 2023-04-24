@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:39:00 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/24 18:13:48 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/24 20:33:07 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,24 +101,24 @@ void ft_leaks(void)
 {
 	system("leaks push_swap");
 }
-int	main(int ac, char **av)
+int	main(int argc, char **argv)
 {
 	t_lst	*a;
 	t_lst	*b;
 
 	atexit(ft_leaks);
-	if (ac <= 2)
+	if (argc <= 2)
 		return (0);
 	a = NULL;
 	b = NULL;
-	if (ft_comp(av, (ac - 1)) == 0 || ft_check_maxmin(av) == 0)
+	if (ft_comp(argv, (argc - 1)) == 0 || ft_check_maxmin(argv) == 0)
 		return (ft_error());
-	a = fill_lst(a, av, ac);
+	a = fill_lst(a, argv, argc);
 	if (!a)
 		return (ft_error());
 	if (ft_check_a(&a) == 0)
 		return (0);
-	ft_conditions(&a, &b, ac);
+	ft_conditions(&a, &b, argc);
 	return (0);
 }
 
