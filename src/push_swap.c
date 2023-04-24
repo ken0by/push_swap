@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:39:00 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/24 17:34:15 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/24 18:13:48 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,31 @@ static int	ft_comp_arr(char **s, int j, int i)
 	return (i);
 }
 
+static int	ft_cmp(char *s)
+{
+	char	*aux;
+
+	if (s[0] == '-')
+	{
+		aux = ft_itoa(INT_MIN);
+		if (ft_strncmp(s, aux, 11) > 0)
+		{
+			free (aux);
+			return (0);
+		}
+	}
+	else
+	{
+		aux = ft_itoa(INT_MAX);
+		if (ft_strncmp(s, aux, 10) > 0)
+		{
+			free (aux);
+			return (0);
+		}
+	}
+	return (1);
+}
+
 static int	ft_check_maxmin(char **s)
 {
 	int		i;
@@ -35,14 +60,8 @@ static int	ft_check_maxmin(char **s)
 			j++;
 		if (j == 10 || (j == 11 && s[i][0] == '-'))
 		{
-			if (s[i][0] == '-')
-			{
-				if (ft_strncmp(s[i], ft_itoa(-2147483648), 11) > 0)
-					return (0);
-			}
-			else
-				if (ft_strncmp(s[i], ft_itoa(2147483647), 10) > 0)
-					return (0);
+			if (ft_cmp(s[i]) == 0)
+				return (0);
 		}
 		else if (j >= 11)
 			return (0);
