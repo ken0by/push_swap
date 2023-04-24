@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 12:29:20 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/24 15:59:13 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/24 17:22:41 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,32 @@ t_lst	*lstnew(int content)
 	new->p = 0;
 	new->next = NULL;
 	return (new);
+}
+
+t_lst	*ft_free_lst(t_lst **a)
+{
+	t_lst	*aux;
+
+	while (*a)
+	{
+		aux = *a;
+		*a = (*a)->next;
+		aux->n = 0;
+		aux->p = 0;
+		aux->next = NULL;
+		free (aux);
+	}
+	free (*a);
+	return (*a);
+}
+
+void	ft_free_node(t_lst **a)
+{
+	t_lst *aux;
+
+	aux = *a;
+	(*a)->n = 0;
+	(*a)->p = 0;
+	(*a)->next = NULL;
+	*a = aux;
 }

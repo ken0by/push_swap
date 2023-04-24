@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:16:36 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/24 15:57:11 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/24 16:48:44 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,15 @@ t_lst	*fill_lst(t_lst *a, char **b, int x)
 			else
 				a = ft_split_lst(b, a, i);
 			if (!a)
-				return (NULL);
+				return (ft_free_lst(&a));
 		}
 		i++;
 	}
 	ft_plst(a);
 	if (nbr_check(a) == 1)
+	{
+		ft_free_lst(&a);
 		return (NULL);
+	}
 	return (a);
 }

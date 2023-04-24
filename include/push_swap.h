@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:59:06 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/24 16:00:10 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/24 16:58:18 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ t_lst	*lstlast(t_lst *a);
 t_lst	*lstnew(int content);
 void	lstadd_back(t_lst **a, t_lst *new);
 t_lst	*lstlast(t_lst *a);
+t_lst	*ft_free_lst(t_lst **a);
+void	ft_free_node(t_lst **a);
 
 /* SS.C */
 int		lstsize(t_lst *a);
@@ -88,7 +90,6 @@ int		nbr_check(t_lst *a);
 /* FT_ERROR.C */
 int		ft_error(void);
 void	ft_free_arr(char **s);
-t_lst	*ft_free_lst(t_lst *a);
 t_lst	*ft_exception(t_lst **a, t_lst **b);
 t_lst	*ft_exception_3(t_lst **a, t_lst **b);
 

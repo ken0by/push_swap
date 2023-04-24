@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:39:00 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/24 15:57:30 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/24 17:34:15 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,16 @@ static int	ft_comp(char **s, int j)
 	}
 	return (1);
 }
-
+void ft_leaks(void)
+{
+	system("leaks push_swap");
+}
 int	main(int ac, char **av)
 {
 	t_lst	*a;
 	t_lst	*b;
 
+	atexit(ft_leaks);
 	if (ac <= 2)
 		return (0);
 	a = NULL;
@@ -98,3 +102,6 @@ int	main(int ac, char **av)
 	ft_conditions(&a, &b, ac);
 	return (0);
 }
+
+/* LOS LEAKS QUE ME DAN SON LOS NUMEROS QUE PASO COMO PARAMETRO, PERO CON LOS INT MIN/MAX CUANO DA ERROR
+TAMBIEN DAN LEAKS POR QUE NO SE LIBERAN NS XQ Y CREO QUE YA */

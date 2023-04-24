@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 13:12:45 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/24 15:46:02 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/24 17:05:50 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	ft_check_push(t_lst **a, t_lst **b, t_lst *aux1, int flag)
 	{
 		while (b[0])
 		{
-			if (b[0] && ft_check_pa(a) == 1)
+			if (!b[0] && ft_check_pa(a) == 1)
 				break ;
 			aux = (*b)->next;
 			ft_push_a(a, *b);

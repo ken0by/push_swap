@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 15:24:23 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/24 15:59:23 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/04/24 16:22:26 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,6 @@ int	ft_error(void)
 {
 	write(2, "Error\n", 6);
 	return (0);
-}
-
-t_lst	*ft_free_lst(t_lst *a)
-{
-	t_lst	*aux;
-
-	while (a)
-	{
-		aux = a->next;
-		a->n = 0;
-		a->next = NULL;
-		a = aux;
-	}
-	free (a);
-	a = NULL;
-	return (a);
 }
 
 t_lst	*ft_exception(t_lst **a, t_lst **b)
