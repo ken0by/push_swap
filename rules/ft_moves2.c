@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_moves2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:28:21 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/23 21:15:12 by rodro            ###   ########.fr       */
+/*   Updated: 2023/04/24 15:46:58 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	ft_ss(int flag, t_lst *aux, t_lst **a, t_lst **b)
 	}
 	else if ((flag == 1) && (aux->n > aux1->n) && ft_count(*a) > 1)
 		flag = ft_sa(flag, aux, aux1);
-	else
+	else if (*b)
 		flag = ft_sb(flag, b);
 	return (flag);
 }
