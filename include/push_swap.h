@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:59:06 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/03 13:20:26 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/03 17:10:09 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int		ft_check(t_lst *a);
 
 /* FT_NBR_CHECK.C */
 int		nbr_check(t_lst *a);
+int		ft_check_nbr(char *a);
 
 /* FT_ERROR.C */
 int		ft_error(void);

@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:39:00 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/03 15:31:59 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/03 17:21:29 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,11 @@ int	main(int ac, char **av)
 	t_lst	*a;
 	t_lst	*b;
 
-	if (ac <= 2)
-		return (0);
+	if (ac <= 1)
+		return (ft_error());
+	if (ac == 2)
+		if (ft_check_nbr(av[1]) == 1)
+			return (0);
 	a = NULL;
 	b = NULL;
 	if (ft_comp(av, (ac - 1)) == 0 || ft_check_maxmin(av) == 0)

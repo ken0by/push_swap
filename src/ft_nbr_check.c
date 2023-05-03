@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 15:17:40 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/24 15:52:47 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/03 17:21:44 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,14 @@ int	nbr_check(t_lst *a)
 		aux = aux->next;
 	}
 	return (0);
+}
+
+int	ft_check_nbr(char *a)
+{
+	int	i;
+
+	i = 0;
+	while (a[i])
+		i++;
+	return (i);
 }
