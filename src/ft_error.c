@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 15:24:23 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/24 21:14:28 by rodro            ###   ########.fr       */
+/*   Updated: 2023/05/03 13:23:05 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,10 @@ void	ft_free_lst(t_lst **a)
 	while (*a)
 	{
 		aux = (*a)->next;
-		(*a)->n = 0;
-		(*a)->next = NULL;
+		free (*a);
 		(*a) = aux;
 	}
-	free (*a);
-	*a = NULL;
+	(*a) = NULL;
 }
 
 t_lst	*ft_exception(t_lst **a, t_lst **b)

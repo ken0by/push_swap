@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_nbr_check.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 15:17:40 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/23 17:03:41 by rodro            ###   ########.fr       */
+/*   Updated: 2023/04/24 15:52:47 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	nbr_check(t_lst *a)
 		aux1 = aux->next;
 		while (aux1)
 		{
-			if (aux1->n == aux->n)
+			if (aux1->p == aux->p)
 				return (1);
 			aux1 = aux1->next;
 		}

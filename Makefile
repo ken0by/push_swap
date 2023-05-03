@@ -1,9 +1,20 @@
-########## MAKEFILE -> FT_PRINTF ##########
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/04/24 16:01:48 by rofuente          #+#    #+#              #
+#    Updated: 2023/04/24 16:01:57 by rofuente         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 LIB	=	ar rcs
 RM	=	rm -f
 
 CC	=	gcc
-CFLAGS	=	-Wall -Wextra -Werror -I ./include -I ./libft/include/ -g3
+CFLAGS	=	-Wall -Wextra -Werror -I ./include -I ./libft/include/
 
 NAME	=	push_swap
 

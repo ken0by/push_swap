@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_lst.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:16:36 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/24 21:20:31 by rodro            ###   ########.fr       */
+/*   Updated: 2023/05/03 13:21:39 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_comp_a(char *b)
 	j = 0;
 	while (b[j])
 	{
-		if (b[j] >= '0' && b[j] <= '9')
+		if ((b[j] >= '0' && b[j] <= '9') || b[j] == '-' || b[j] == '+')
 			j++;
 		else
 			return (0);
@@ -91,12 +91,11 @@ t_lst	*fill_lst(t_lst *a, char **b, int x)
 		}
 		i++;
 	}
-	i = nbr_check(a);
-	if (i == 1)
+	ft_plst(a);
+	if (nbr_check(a) == 1)
 	{
 		ft_free_lst(&a);
 		return (NULL);
 	}
-	ft_plst(a);
 	return (a);
 }

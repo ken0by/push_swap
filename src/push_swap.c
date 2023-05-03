@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:39:00 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/24 21:14:55 by rodro            ###   ########.fr       */
+/*   Updated: 2023/05/03 13:22:22 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,18 +79,12 @@ static int	ft_comp(char **s, int j)
 	return (1);
 }
 
-void	ft_leaks()
-{
-	system("leaks push_swap");
-}
-
 int	main(int ac, char **av)
 {
 	t_lst	*a;
 	t_lst	*b;
 
-	atexit(ft_leaks);
-	if (ac < 2)
+	if (ac <= 2)
 		return (0);
 	a = NULL;
 	b = NULL;
@@ -102,6 +96,6 @@ int	main(int ac, char **av)
 	if (ft_check_a(&a) == 0)
 		return (0);
 	ft_conditions(&a, &b, ac);
-	//ft_free_lst(&a);
+	ft_free_lst(&a);
 	return (0);
 }
