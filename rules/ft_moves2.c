@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 13:28:21 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/24 15:46:58 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/03 15:42:18 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,15 @@ int	ft_ss(int flag, t_lst *aux, t_lst **a, t_lst **b)
 		aux2 = *b;
 		if ((*b)->next)
 			aux3 = (*b)->next;
+		if ((flag == 1) && (aux->n > aux1->n) && aux3 && aux2
+			&& (aux2->n < aux3->n) && ft_count(a[0]) > 1 && ft_count(*b) > 1)
+		{
+			ft_swap_s(*a, *b);
+			flag = 1;
+			ft_printf("ss\n");
+		}
 	}
-	if ((flag == 1) && (aux->n > aux1->n) && aux3 && aux2
-		&& (aux2->n < aux3->n) && ft_count(a[0]) > 1 && ft_count(*b) > 1)
-	{
-		ft_swap_s(*a, *b);
-		flag = 1;
-		ft_printf("ss\n");
-	}
-	else if ((flag == 1) && (aux->n > aux1->n) && ft_count(*a) > 1)
+	if ((flag == 1) && (aux->n > aux1->n) && ft_count(*a) > 1)
 		flag = ft_sa(flag, aux, aux1);
 	else if (*b)
 		flag = ft_sb(flag, b);
