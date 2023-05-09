@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:39:00 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/09 12:53:13 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/09 18:20:45 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,7 @@ static int	ft_check_maxmin(char **s)
 	i = 1;
 	while (s[i])
 	{
-		j = 0;
-		while (s[i][j])
-			j++;
+		j = ft_strlen_no_s(s[i]);
 		if (j == 10 || (j == 11 && s[i][0] == '-'))
 		{
 			if (s[i][0] == '-')
@@ -85,9 +83,9 @@ int	main(int ac, char **av)
 	t_lst	*b;
 
 	if (ac <= 1)
-		return (ft_error());
+		return (0);
 	if (ac == 2)
-		if (ft_check_nbr(av[1]) == 1)
+		if (ft_check_nbr(av[1]) >= 1 && ft_check_space(av, (ac - 1)) == 0)
 			return (0);
 	a = NULL;
 	b = NULL;

@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:59:06 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/09 12:52:26 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/09 18:20:18 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ int		ft_check(t_lst *a);
 int		nbr_check(t_lst *a);
 int		ft_check_nbr(char *a);
 int		ft_strlen_nbr(char *str);
+int		ft_check_space(char **a, int i);
+int		ft_strlen_no_s(char *a);
 
 /* FT_ERROR.C */
 int		ft_error(void);
