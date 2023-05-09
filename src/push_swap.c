@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:39:00 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/03 17:21:29 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/09 12:53:13 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,10 @@ int	main(int ac, char **av)
 		return (ft_error());
 	if (ft_check_a(&a) == 0)
 		return (0);
-	ft_conditions(&a, &b, ac);
+	if (ac == 2)
+		ft_conditions(&a, &b, ft_strlen_nbr(av[1]) + 1);
+	else
+		ft_conditions(&a, &b, ac);
 	ft_free_lst(&a);
 	return (0);
 }
