@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:39:00 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/09 18:20:45 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/16 17:05:57 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,21 @@ static int	ft_check_maxmin(char **s)
 				if (ft_strncmp(s[i], ft_itoa(2147483647), 10) > 0)
 					return (0);
 		}
-		else if (j >= 11)
+		if (j > 11)
 			return (0);
 		i++;
 	}
 	return (1);
+}
+
+static void	ft_neg_p(char *s, int i, int neg, int p)
+{
+	if (s[i] == '-')
+		neg++;
+	if (s[i] == '+')
+		p++;
+	if ((s[i] == '-' || s[i] == '+') && i != 0 && s[i - 1] != ' ')
+		s[i] = 'p';
 }
 
 static int	ft_comp(char **s, int j)
@@ -62,16 +72,16 @@ static int	ft_comp(char **s, int j)
 		i = 0;
 		while (s[j][i])
 		{
-			if (s[j][i] == '-')
-				neg++;
-			if (s[j][i] == '+')
-				p++;
+			ft_neg_p(s[j], i, neg, p);
 			i = ft_comp_arr(s, j, i);
-			if (i == 0)
+			if (i == 0 || neg > 1 || p > 1)
 				return (0);
+			if (s[j][i] == ' ')
+			{
+				neg = 0;
+				p = 0;
+			}
 		}
-		if (neg > 1 || p > 1)
-			return (0);
 		j--;
 	}
 	return (1);

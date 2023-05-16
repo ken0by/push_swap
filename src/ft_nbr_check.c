@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 15:17:40 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/09 18:20:26 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/16 17:09:27 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ int	ft_strlen_nbr(char *str)
 	k = 0;
 	while (str[i])
 	{
-		if (str[i] >= '0' && str[i] <= '9')
+		if ((str[i] >= '0' && str[i] <= '9')
+			&& !(str[i + 1] >= '0' && str[i] <= '9'))
 			k++;
 		i++;
 	}
