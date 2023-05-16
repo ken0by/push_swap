@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 15:24:23 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/16 16:46:58 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/16 17:19:51 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_error(void)
 	return (0);
 }
 
-void	ft_free_lst(t_lst **a)
+int	ft_free_lst(t_lst **a)
 {
 	t_lst	*aux;
 
@@ -45,6 +45,7 @@ void	ft_free_lst(t_lst **a)
 		(*a) = aux;
 	}
 	(*a) = NULL;
+	return (0);
 }
 
 t_lst	*ft_exception(t_lst **a, t_lst **b)
