@@ -34,7 +34,16 @@ OBJ_DIR	=	./obj/
 OBJ_FILES	=	$(FT:.c=.o) $(LST:.c=.o) $(MEM:.c=.o) $(PUT:.c=.o) $(STR:.c=.o) $(FT_PRINTF:.c=.o) $(GNL:.c=.o)
 OBJ	=	$(addprefix $(OBJ_DIR), $(OBJ_FILES))
 
-#INCLUDE = libft.h ./ft_printf/ft_printf.h ./gnl/get_next_line.h ./gnl/get_next_line_bonus.h
+##########COLORES##########
+DEF_COLOR = \033[0;39m
+CUT = \033[K
+R = \033[31;1m
+G = \033[32;1m
+Y = \033[33;1m
+B = \033[34;1m
+P = \033[35;1m
+GR = \033[30;1m
+END = \033[0m
 
 all: $(OBJ_DIR) $(NAME)
 

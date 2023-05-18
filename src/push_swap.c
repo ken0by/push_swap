@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:39:00 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/18 13:36:20 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/18 19:01:48 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ static int	ft_comp(char **s, int j)
 
 	while (j > 0)
 	{
+		if (ft_no_argv(s[j]) == 1)
+			return (0);
 		i = 0;
 		while (s[j][i])
 		{

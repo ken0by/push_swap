@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:59:06 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/16 17:20:08 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/18 19:00:26 by rodro            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ t_lst	*ft_iter(t_lst **a);
 
 /* FT_CHECK.C */
 int		ft_check(t_lst *a);
+int		ft_no_argv(char *str);
 
 /* FT_NBR_CHECK.C */
 int		nbr_check(t_lst *a);
