@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/13 13:12:45 by rofuente          #+#    #+#             */
-/*   Updated: 2023/04/24 15:46:02 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/18 13:16:30 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,11 @@ int	ft_check_a(t_lst **a)
 	while (aux)
 	{
 		if (aux->next)
+		{
 			aux1 = aux->next;
-		if (aux->n > aux1->n)
-			return (1);
+			if (aux->n > aux1->n)
+				return (1);
+		}
 		aux = aux->next;
 	}
 	return (0);

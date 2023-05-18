@@ -6,27 +6,11 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 17:16:36 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/09 12:55:29 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/18 13:14:53 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-
-static int	ft_comp_a(char *b)
-{
-	int	j;
-
-	j = 0;
-	while (b[j])
-	{
-		if ((b[j] >= '0' && b[j] <= '9') || b[j] == ' '
-			|| b[j] == '-' || b[j] == '+')
-			j++;
-		else
-			return (0);
-	}
-	return (j);
-}
 
 int	ft_count(t_lst *a)
 {
@@ -63,33 +47,14 @@ static t_lst	*ft_split_lst(char **b, t_lst *a, int i)
 	return (a);
 }
 
-static t_lst	*ft_add_node(char **b, t_lst *a, int i)
-{
-	t_lst	*new;
-
-	new = lstnew(ft_atoi(b[i]));
-	lstadd_back(&a, new);
-	return (a);
-}
-
 t_lst	*fill_lst(t_lst *a, char **b, int x)
 {
-	int		i;
-	int		j;
+	int	i;
 
 	i = 1;
 	while (i < x)
 	{
-		j = ft_comp_a(b[i]);
-		if (j != 0)
-		{
-			if (j == 1)
-				a = ft_add_node(b, a, i);
-			else
-				a = ft_split_lst(b, a, i);
-			if (!a)
-				return (NULL);
-		}
+		a = ft_split_lst(b, a, i);
 		i++;
 	}
 	ft_plst(a);

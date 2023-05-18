@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:39:00 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/16 17:21:29 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/05/18 13:36:20 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,38 +49,27 @@ static int	ft_check_maxmin(char **s)
 	return (1);
 }
 
-static void	ft_neg_p(char *s, int i, int neg, int p)
+static void	ft_neg_p(char *s, int i)
 {
-	if (s[i] == '-')
-		neg++;
-	if (s[i] == '+')
-		p++;
-	if ((s[i] == '-' || s[i] == '+') && i != 0 && s[i - 1] != ' ')
+	if ((s[i] == '-' || s[i] == '+') && i != 0 && s[i -1] != ' ')
+		s[i] = 'p';
+	if ((s[i] == '-' || s[i] == '+') && s[i + 1] == ' ')
 		s[i] = 'p';
 }
 
 static int	ft_comp(char **s, int j)
 {
 	int	i;
-	int	neg;
-	int	p;
 
 	while (j > 0)
 	{
-		neg = 0;
-		p = 0;
 		i = 0;
 		while (s[j][i])
 		{
-			ft_neg_p(s[j], i, neg, p);
+			ft_neg_p(s[j], i);
 			i = ft_comp_arr(s, j, i);
-			if (i == 0 || neg > 1 || p > 1)
+			if (i == 0)
 				return (0);
-			if (s[j][i] == ' ')
-			{
-				neg = 0;
-				p = 0;
-			}
 		}
 		j--;
 	}

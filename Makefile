@@ -6,7 +6,7 @@
 #    By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/24 16:01:48 by rofuente          #+#    #+#              #
-#    Updated: 2023/05/16 17:18:42 by rofuente         ###   ########.fr        #
+#    Updated: 2023/05/18 13:11:00 by rofuente         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,6 @@ OBJ	=	$(addprefix $(OBJ_DIR), $(OBJ_FILES))
 
 LIBFT_PATH = libft/
 LIBFT = $(LIBFT_PATH)libft.a
-#INCLUDE	=	include/
 
 ##########COLORES##########
 DEF_COLOR = \033[0;39m
