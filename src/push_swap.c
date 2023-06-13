@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:39:00 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/18 19:01:48 by rodro            ###   ########.fr       */
+/*   Updated: 2023/06/13 16:11:13 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,29 +22,23 @@ static int	ft_comp_arr(char **s, int j, int i)
 	return (i);
 }
 
-static int	ft_check_maxmin(char **s)
+static int	check_arg_space(char **s)
 {
-	int		i;
-	int		j;
+	int	i;
 
-	i = 1;
-	while (s[i])
+	i = -1;
+	while (s[++i])
 	{
-		j = ft_strlen_no_s(s[i]);
-		if (j == 10 || (j == 11 && s[i][0] == '-'))
+		if (ft_space_check(s[i]) > 0)
 		{
-			if (s[i][0] == '-')
-			{
-				if (ft_strncmp(s[i], ft_itoa(-2147483648), 11) > 0)
-					return (0);
-			}
-			else
-				if (ft_strncmp(s[i], ft_itoa(2147483647), 10) > 0)
-					return (0);
+			if (!check_mm(s[i]))
+				return (0);
 		}
-		if (j > 11)
-			return (0);
-		i++;
+		else
+		{
+			if (!ft_check_maxmin(s[i]))
+				return (0);
+		}
 	}
 	return (1);
 }
@@ -90,7 +84,7 @@ int	main(int ac, char **av)
 			return (0);
 	a = NULL;
 	b = NULL;
-	if (ft_comp(av, (ac - 1)) == 0 || ft_check_maxmin(av) == 0)
+	if (ft_comp(av, (ac - 1)) == 0 || check_arg_space(av) == 0)
 		return (ft_error());
 	a = fill_lst(a, av, ac);
 	if (!a)

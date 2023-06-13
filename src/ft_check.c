@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rodro <rodro@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 20:04:54 by rofuente          #+#    #+#             */
-/*   Updated: 2023/05/18 19:00:00 by rodro            ###   ########.fr       */
+/*   Updated: 2023/06/13 16:00:09 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,25 @@ int	ft_no_argv(char *str)
 	if (k == 0)
 		return (1);
 	return (0);
+}
+
+int	ft_check_maxmin(char *s)
+{
+	int	j;
+
+	j = ft_strlen_no_s(s);
+	if (j == 10 || (j == 11 && s[0] == '-'))
+	{
+		if (s[0] == '-')
+		{
+			if (ft_strncmp(s, ft_itoa(-2147483648), 11) > 0)
+				return (0);
+		}
+		else
+			if (ft_strncmp(s, ft_itoa(2147483647), 10) > 0)
+				return (0);
+	}
+	if (j > 11 || (j == 11 && s[0] != '-'))
+		return (0);
+	return (1);
 }

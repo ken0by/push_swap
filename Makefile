@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rodro <rodro@student.42.fr>                +#+  +:+       +#+         #
+#    By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/24 16:01:48 by rofuente          #+#    #+#              #
-#    Updated: 2023/05/18 18:56:32 by rodro            ###   ########.fr        #
+#    Updated: 2023/06/13 16:11:31 by rofuente         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ RM	=	rm -f
 
 CC	=	gcc
 CFLAGS	=	-Wall -Wextra -Werror -I ./include -I ./libft/include/
+DEBUG	=	-g3 -fsanitize=address
 
 NAME	=	push_swap
 
