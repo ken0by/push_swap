@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 16:59:06 by rofuente          #+#    #+#             */
-/*   Updated: 2023/06/13 16:00:44 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/06/27 11:14:20 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <string.h>
+# include <limits.h>
 
 # include "../libft/include/libft.h"
 # include "../libft/ft_printf/include/ft_printf.h"

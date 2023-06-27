@@ -6,7 +6,7 @@
 /*   By: rofuente <rofuente@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:59:01 by rofuente          #+#    #+#             */
-/*   Updated: 2023/06/13 16:10:53 by rofuente         ###   ########.fr       */
+/*   Updated: 2023/06/27 11:14:35 by rofuente         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ static int	ft_cmpnbr(char *s)
 	{
 		if (s[0] == '-')
 		{
-			if (ft_strncmp(s, ft_itoa(-2147483648), 11) > 0)
+			if (ft_strncmp(s, ft_itoa(INT_MIN), 11) > 0)
 				return (free(s), 0);
 		}
 		else
-			if (ft_strncmp(s, ft_itoa(2147483647), 10) > 0)
+			if (ft_strncmp(s, ft_itoa(INT_MAX), 10) > 0)
 				return (free(s), 0);
 	}
 	if (i > 11 || (i == 11 && s[0] != '-'))
